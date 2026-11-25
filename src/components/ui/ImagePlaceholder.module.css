@@ -1,0 +1,37 @@
+.placeholder {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+}
+
+.image {
+  width: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+}
+
+.label {
+  padding: var(--space-3) var(--space-4);
+  color: rgb(243 236 224 / 0.75);
+  font-size: var(--text-small);
+  font-style: italic;
+}
+
+.vineyard {
+  background: linear-gradient(160deg, #6b7a4a, #2c3319);
+}
+
+.bordeaux {
+  background: linear-gradient(160deg, #5c1a2b, #20090f);
+}
+
+.gold {
+  background: linear-gradient(150deg, #cdb98a, #8a6f45);
+}
+
+.stone {
+  background: linear-gradient(150deg, #b5aa98, #5f564a);
+}

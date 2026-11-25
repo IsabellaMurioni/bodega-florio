@@ -1,0 +1,189 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--color-bg);
+  border-bottom: 1px solid rgb(36 27 22 / 0.1);
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  max-width: calc(var(--container-max) + 2 * var(--gutter));
+  margin-inline: auto;
+  padding: 20px var(--gutter);
+}
+
+.wordmark {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  letter-spacing: 0.14em;
+  line-height: 1;
+  color: var(--color-ink);
+  text-decoration: none;
+}
+
+.wordmark:hover {
+  color: var(--color-ink);
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: clamp(18px, 3vw, 40px);
+  margin-left: auto;
+  padding: 0;
+  list-style: none;
+}
+
+.link {
+  color: var(--color-ink);
+  font-size: 0.76rem;
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.link:hover {
+  color: var(--color-gold);
+}
+
+.link.active {
+  color: var(--color-bordeaux);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.cart {
+  display: inline-flex;
+  padding: var(--space-1);
+  color: var(--color-ink);
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.cart:hover {
+  color: var(--color-gold);
+}
+
+/* Burger: 3 lines of 22x2px, 5px apart; turns into an X when open. */
+.burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: var(--space-2);
+  margin-right: calc(-1 * var(--space-2));
+  border: 0;
+  background: none;
+  color: var(--color-ink);
+}
+
+.burger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background-color: currentColor;
+  transition:
+    transform var(--duration-base) var(--ease-out),
+    opacity var(--duration-fast) var(--ease-out);
+}
+
+.isOpen .burger span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.isOpen .burger span:nth-child(2) {
+  opacity: 0;
+}
+
+.isOpen .burger span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Full-screen mobile menu. Sits under the bar (z-index -1 inside the header's stacking context). */
+.overlay {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .links {
+    display: none;
+  }
+
+  .burger {
+    display: inline-flex;
+  }
+
+  .overlay {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-bg);
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity var(--duration-base) var(--ease-out),
+      visibility 0s linear var(--duration-base);
+  }
+
+  .isOpen .overlay {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity var(--duration-base) var(--ease-out);
+  }
+
+  .overlayLinks {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(30px, 8vw, 52px);
+    padding: 0;
+    list-style: none;
+  }
+
+  .overlayLinks li {
+    opacity: 0;
+    transform: translateY(16px);
+    transition:
+      opacity var(--duration-slow) var(--ease-out),
+      transform var(--duration-slow) var(--ease-out);
+  }
+
+  .isOpen .overlayLinks li {
+    opacity: 1;
+    transform: none;
+  }
+
+  .isOpen .overlayLinks li:nth-child(1) {
+    transition-delay: 0.08s;
+  }
+
+  .isOpen .overlayLinks li:nth-child(2) {
+    transition-delay: 0.14s;
+  }
+
+  .isOpen .overlayLinks li:nth-child(3) {
+    transition-delay: 0.2s;
+  }
+
+  .isOpen .overlayLinks li:nth-child(4) {
+    transition-delay: 0.26s;
+  }
+
+  .overlayLinks .link {
+    font-family: var(--font-heading);
+    font-size: clamp(1.3rem, 5vw, 1.9rem);
+    font-weight: var(--weight-regular);
+    letter-spacing: 0.1em;
+  }
+}

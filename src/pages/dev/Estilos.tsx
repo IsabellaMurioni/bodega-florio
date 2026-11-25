@@ -1,4 +1,11 @@
 // Dev-only style guide. Registered in src/main.tsx only when import.meta.env.DEV is true.
+import Button from '@/components/ui/Button';
+import ImagePlaceholder, { type PlaceholderTone } from '@/components/ui/ImagePlaceholder';
+import Reveal from '@/components/ui/Reveal';
+import SectionHeading from '@/components/ui/SectionHeading';
+import CartIcon from '@/components/ui/icons/CartIcon';
+import MenuIcon from '@/components/ui/icons/MenuIcon';
+import WhatsAppIcon from '@/components/ui/icons/WhatsAppIcon';
 import './Estilos.css';
 
 const colors = [
@@ -21,6 +28,13 @@ const families = [
 ];
 
 const weights = [400, 500, 600, 700, 800];
+
+const placeholders: { tone: PlaceholderTone; label: string }[] = [
+  { tone: 'vineyard', label: 'Viñedo con la Cordillera' },
+  { tone: 'bordeaux', label: 'Copa de Malbec' },
+  { tone: 'gold', label: 'Barricas en la cava' },
+  { tone: 'stone', label: 'Fachada de la bodega' },
+];
 
 function Estilos() {
   return (
@@ -102,6 +116,61 @@ function Estilos() {
           <button type="button" className="btn-glass btn-glass--on-dark">
             Ver vinos
           </button>
+        </div>
+      </section>
+
+      <section className="sg-section">
+        <h2>Componentes · Button</h2>
+        <div className="sg-buttons sg-buttons--light">
+          <Button to="/reservas">Reservar (Link interno)</Button>
+          <Button href="https://bodegaflorio.mitiendanube.com/">Tienda (externo)</Button>
+          <Button onClick={() => alert('click')}>Button</Button>
+        </div>
+        <div className="sg-buttons sg-buttons--dark">
+          <Button to="/vinos" tone="onDark">
+            Ver vinos
+          </Button>
+          <Button tone="onDark">Button</Button>
+        </div>
+      </section>
+
+      <section className="sg-section">
+        <h2>Componentes · SectionHeading</h2>
+        <SectionHeading
+          eyebrow="Enoturismo"
+          title="Una tarde entre viñedos"
+          intro="Recorré la bodega, caminá entre las hileras y terminá con una degustación guiada."
+        />
+        <SectionHeading eyebrow="Nuestros vinos" title="Centrado" align="center" />
+      </section>
+
+      <section className="sg-section">
+        <h2>Componentes · ImagePlaceholder</h2>
+        <div className="sg-placeholders">
+          {placeholders.map(({ tone, label }) => (
+            <ImagePlaceholder key={tone} tone={tone} label={label} ratio="4 / 5" />
+          ))}
+        </div>
+      </section>
+
+      <section className="sg-section">
+        <h2>Componentes · Icons</h2>
+        <div className="sg-icons">
+          <CartIcon />
+          <WhatsAppIcon />
+          <MenuIcon />
+          <CartIcon size={32} title="Carrito" />
+        </div>
+      </section>
+
+      <section className="sg-section">
+        <h2>Componentes · Reveal</h2>
+        <div className="sg-placeholders">
+          {[0, 120, 240, 360].map((delay) => (
+            <Reveal key={delay} delay={delay}>
+              <div className="sg-reveal-card">delay {delay}ms</div>
+            </Reveal>
+          ))}
         </div>
       </section>
     </div>
