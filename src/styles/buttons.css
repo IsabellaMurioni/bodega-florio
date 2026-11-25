@@ -1,0 +1,52 @@
+/*
+ * Glass button. Pick the modifier for the background it sits on:
+ *   class="btn-glass btn-glass--on-dark"   over photos / dark sections
+ *   class="btn-glass btn-glass--on-light"  over light sections
+ */
+
+.btn-glass {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: 0.9em 2em;
+  border: 1px solid var(--color-glass-border);
+  border-radius: var(--radius-pill);
+  background-color: var(--color-glass-fill);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+  backdrop-filter: blur(12px) saturate(140%);
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  font-weight: var(--weight-bold);
+  line-height: 1;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    transform var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out),
+    background-color var(--duration-base) var(--ease-out);
+}
+
+.btn-glass:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lift);
+  background-color: rgb(201 178 122 / 0.32);
+}
+
+.btn-glass:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-soft);
+}
+
+.btn-glass--on-dark,
+.btn-glass--on-dark:hover {
+  color: var(--color-bg);
+}
+
+.btn-glass--on-light,
+.btn-glass--on-light:hover {
+  color: var(--color-bordeaux);
+}

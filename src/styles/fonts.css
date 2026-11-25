@@ -1,0 +1,38 @@
+/*
+ * Brand fonts (self-hosted, licensed under OFL 1.1; license files sit next to each font).
+ * - Picaflor (Fontesk): optical sizes 72pt (display titles) and 24pt (smaller headings).
+ * - Garamontio (Fontesk): variable font, wght axis 400-800, separate upright and italic files.
+ * Picaflor-72pt and garamontio.woff2 are preloaded from src/main.tsx.
+ */
+
+@font-face {
+  font-family: 'Picaflor Display';
+  src: url('../assets/fonts/picaflor/Picaflor-72pt.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Picaflor';
+  src: url('../assets/fonts/picaflor/Picaflor-24pt.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Garamontio';
+  src: url('../assets/fonts/garamontio/garamontio.woff2') format('woff2');
+  font-weight: 400 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Garamontio';
+  src: url('../assets/fonts/garamontio/garamontio_it.woff2') format('woff2');
+  font-weight: 400 800;
+  font-style: italic;
+  font-display: swap;
+}

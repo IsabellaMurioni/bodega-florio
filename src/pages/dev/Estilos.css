@@ -1,0 +1,74 @@
+/* Styles for the dev-only style guide (/estilos). Not shipped to production. */
+
+.sg {
+  padding-block: var(--section-padding-sm);
+}
+
+.sg-section {
+  display: grid;
+  gap: var(--space-5);
+  padding-block: var(--space-7);
+  border-bottom: 1px solid rgb(138 122 102 / 0.3);
+}
+
+.sg-swatches {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: var(--space-5);
+  padding: 0;
+  list-style: none;
+}
+
+.sg-swatches li {
+  display: grid;
+  gap: var(--space-1);
+  font-size: var(--text-small);
+}
+
+.sg-swatch {
+  height: 88px;
+  border: 1px solid rgb(138 122 102 / 0.35);
+  border-radius: var(--radius-md);
+}
+
+.sg code {
+  color: var(--color-muted);
+  font-size: var(--text-small);
+}
+
+.sg-family {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.sg-scale-row {
+  display: grid;
+  grid-template-columns: 9rem repeat(3, minmax(0, 1fr));
+  align-items: baseline;
+  gap: var(--space-5);
+}
+
+@media (max-width: 760px) {
+  .sg-scale-row {
+    grid-template-columns: 1fr;
+    gap: var(--space-1);
+  }
+}
+
+.sg-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-5);
+  padding: var(--space-7) var(--space-6);
+  border-radius: var(--radius-lg);
+}
+
+.sg-buttons--light {
+  background: var(--color-surface);
+}
+
+.sg-buttons--dark {
+  background:
+    radial-gradient(circle at 20% 30%, var(--color-bordeaux), transparent 60%),
+    var(--color-inkblack);
+}
