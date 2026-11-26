@@ -1,8 +1,8 @@
 import ExperienceSteps from '@/components/enoturismo/ExperienceSteps';
 import HoursAndPrice from '@/components/enoturismo/HoursAndPrice';
-import Intro from '@/components/enoturismo/Intro';
 import VisitorsGallery from '@/components/enoturismo/VisitorsGallery';
 import CtaBand from '@/components/ui/CtaBand';
+import IntroText from '@/components/ui/IntroText';
 import PageHero from '@/components/ui/PageHero';
 import { contactReasons } from '@/data/contact';
 import { WINEOBS_URL } from '@/services/links';
@@ -19,7 +19,10 @@ function Enoturismo() {
         tone="vineyard"
         photoLabel="visitantes recorriendo el viñedo"
       />
-      <Intro />
+      <IntroText>
+        Una caminata entre los viñedos, el recorrido por el proceso productivo, una degustación
+        guiada de nuestros estilos y la historia de la familia Florio — todo en una sola visita.
+      </IntroText>
       <ExperienceSteps />
       <HoursAndPrice />
       <VisitorsGallery />

@@ -1,7 +1,7 @@
 .hero {
   position: relative;
   display: flex;
-  min-height: max(560px, calc(100svh - 64px));
+  min-height: max(560px, calc(100svh - var(--header-height)));
   overflow: hidden;
   color: var(--color-bg);
   background-color: var(--color-inkblack);

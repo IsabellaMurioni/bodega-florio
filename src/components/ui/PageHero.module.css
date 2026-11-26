@@ -70,3 +70,15 @@
     right: auto;
   }
 }
+
+.sparkling {
+  background: linear-gradient(150deg, #e9e4d3, #b9a86e);
+}
+
+.red {
+  background: linear-gradient(150deg, #7a2236, #2c0a12);
+}
+
+.blush {
+  background: linear-gradient(150deg, #e7c9b0, #a9714f);
+}

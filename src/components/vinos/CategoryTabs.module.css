@@ -1,0 +1,70 @@
+/* Sticks right under the site header. */
+.bar {
+  position: sticky;
+  top: var(--header-height);
+  z-index: 50;
+  background-color: var(--color-bg);
+  border-bottom: 1px solid rgb(36 27 22 / 0.1);
+}
+
+/* Scrolls horizontally on narrow screens instead of overflowing the page. */
+.scroller {
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.scroller::-webkit-scrollbar {
+  display: none;
+}
+
+.list {
+  display: flex;
+  gap: clamp(20px, 3.5vw, 48px);
+  width: max-content;
+}
+
+.tab {
+  position: relative;
+  padding: var(--space-4) 0;
+  border: 0;
+  background: none;
+  font-size: 0.82rem;
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--color-muted);
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.tab:hover {
+  color: var(--color-ink);
+}
+
+.tab::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  left: 0;
+  height: 2px;
+  background-color: var(--color-gold);
+  transform: scaleX(0);
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.tab[aria-selected='true'] {
+  color: var(--color-bordeaux);
+}
+
+.tab[aria-selected='true']::after {
+  transform: scaleX(1);
+}
+
+.tab:focus-visible {
+  outline-offset: -2px;
+}
+
+.scroller {
+  position: relative;
+}
