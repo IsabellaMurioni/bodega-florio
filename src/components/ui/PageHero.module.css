@@ -1,0 +1,72 @@
+.hero {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: clamp(380px, 56vh, 540px);
+  color: var(--color-bg);
+  overflow: hidden;
+}
+
+/* Darken the bottom so the title stays readable on any photo. */
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 35%, rgb(25 18 13 / 0.55));
+  pointer-events: none;
+}
+
+.vineyard {
+  background: linear-gradient(160deg, #6b7a4a, #2c3319);
+}
+
+.bordeaux {
+  background: linear-gradient(160deg, #5c1a2b, #20090f);
+}
+
+.gold {
+  background: linear-gradient(150deg, #cdb98a, #8a6f45);
+}
+
+.stone {
+  background: linear-gradient(150deg, #b5aa98, #5f564a);
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  padding-block: var(--space-9) var(--space-8);
+}
+
+.eyebrow {
+  margin-bottom: var(--space-4);
+  color: var(--color-gold);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: var(--text-display);
+  line-height: 1;
+  color: var(--color-bg);
+}
+
+.photoLabel {
+  position: absolute;
+  right: var(--gutter);
+  bottom: var(--space-5);
+  z-index: 1;
+  font-size: var(--text-small);
+  font-style: italic;
+  color: rgb(243 236 224 / 0.7);
+}
+
+@media (max-width: 760px) {
+  .inner {
+    padding-block: var(--space-8) var(--space-9);
+  }
+
+  .photoLabel {
+    left: var(--gutter);
+    right: auto;
+  }
+}

@@ -1,0 +1,11 @@
+.section {
+  padding-block: var(--section-padding);
+}
+
+.text {
+  max-width: 800px;
+  font-size: var(--text-h3);
+  font-style: italic;
+  line-height: var(--leading-snug);
+  color: var(--color-bordeaux);
+}

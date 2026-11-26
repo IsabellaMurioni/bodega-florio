@@ -3,11 +3,11 @@ import HeroSection from '@/components/home/HeroSection';
 import HistorySection from '@/components/home/HistorySection';
 import LocationSection from '@/components/home/LocationSection';
 import MetricsBand from '@/components/home/MetricsBand';
-import ReservationCta from '@/components/home/ReservationCta';
 import ReviewsSection from '@/components/home/ReviewsSection';
 import TourTeaser from '@/components/home/TourTeaser';
 import VinotecaSection from '@/components/home/VinotecaSection';
 import WinesTeaser from '@/components/home/WinesTeaser';
+import CtaBand from '@/components/ui/CtaBand';
 
 function Home() {
   return (
@@ -22,7 +22,12 @@ function Home() {
       <ReviewsSection />
       <VinotecaSection />
       <LocationSection />
-      <ReservationCta />
+      <CtaBand
+        id="reserva-title"
+        title="Vení a conocer Florio."
+        text="Recorridos, degustaciones y una mesa con vista a los viñedos te esperan."
+        whatsappMessage="Hola, quiero reservar una visita a Bodega Florio."
+      />
     </>
   );
 }
