@@ -1,6 +1,7 @@
 .footer {
+  --color-focus: var(--color-gold);
   background-color: var(--color-inkblack);
-  color: #e9dcc8;
+  color: var(--color-on-dark-soft);
   font-size: var(--text-small);
 }
 
@@ -29,12 +30,12 @@
   font-size: 1.4rem;
   letter-spacing: 0.14em;
   line-height: 1;
-  color: #e9dcc8;
+  color: var(--color-on-dark-soft);
   text-decoration: none;
 }
 
 .tagline {
-  color: #a8977b;
+  color: var(--color-on-dark-muted);
 }
 
 .heading {
@@ -65,8 +66,8 @@
 
 .copyright {
   padding: var(--space-5) var(--gutter);
-  border-top: 1px solid rgb(243 236 224 / 0.1);
-  color: #766551;
+  border-top: 1px solid rgb(248 244 234 / 0.1);
+  color: var(--color-on-dark-muted);
   font-size: 0.72rem;
   text-align: center;
 }

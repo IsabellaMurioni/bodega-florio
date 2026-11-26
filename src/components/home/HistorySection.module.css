@@ -17,13 +17,12 @@
 
 .eyebrow {
   margin-bottom: var(--space-5);
-  color: var(--color-gold);
+  color: var(--color-bordeaux);
 }
 
 .lead {
-  font-family: var(--font-body);
+  font-family: var(--font-heading);
   font-size: var(--text-h3);
-  font-style: italic;
   font-weight: var(--weight-regular);
   line-height: var(--leading-snug);
   letter-spacing: 0;

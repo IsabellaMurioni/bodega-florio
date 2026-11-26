@@ -1,4 +1,5 @@
 .hero {
+  --color-focus: var(--color-gold);
   position: relative;
   display: flex;
   min-height: max(560px, calc(100svh - var(--header-height)));
@@ -11,9 +12,9 @@
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse at 78% 18%, rgb(176 141 63 / 0.22), transparent 55%),
-    radial-gradient(ellipse at 15% 85%, rgb(25 18 13 / 0.9), transparent 60%),
-    linear-gradient(155deg, var(--color-bordeaux) 0%, #2a0d16 55%, var(--color-inkblack) 100%);
+    radial-gradient(ellipse at 78% 18%, rgb(221 185 114 / 0.22), transparent 55%),
+    radial-gradient(ellipse at 15% 85%, rgb(54 6 6 / 0.9), transparent 60%),
+    linear-gradient(155deg, var(--color-bordeaux) 0%, #4a0318 55%, var(--color-inkblack) 100%);
 }
 
 .inner {
@@ -55,7 +56,7 @@
   letter-spacing: var(--tracking-wider);
   text-transform: uppercase;
   text-decoration: none;
-  border-bottom: 1px solid rgb(243 236 224 / 0.4);
+  border-bottom: 1px solid rgb(248 244 234 / 0.4);
   padding-bottom: 2px;
 }
 
@@ -74,7 +75,7 @@
   letter-spacing: var(--tracking-widest);
   text-transform: uppercase;
   text-decoration: none;
-  color: rgb(243 236 224 / 0.65);
+  color: rgb(248 244 234 / 0.65);
   writing-mode: vertical-rl;
 }
 
@@ -87,7 +88,7 @@
   width: 1px;
   height: 56px;
   overflow: hidden;
-  background-color: rgb(243 236 224 / 0.2);
+  background-color: rgb(248 244 234 / 0.2);
 }
 
 .scrollLine::after {

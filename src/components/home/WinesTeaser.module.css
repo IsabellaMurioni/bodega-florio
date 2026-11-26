@@ -33,7 +33,7 @@
 
 .eyebrow {
   margin-bottom: var(--space-4);
-  color: var(--color-gold);
+  color: var(--color-bordeaux);
 }
 
 .lead {
@@ -56,18 +56,19 @@
 }
 
 .link:hover {
-  color: var(--color-gold);
+  color: var(--color-ink);
+  border-bottom-color: var(--color-bordeaux);
 }
 
 .list {
   grid-column: 7 / span 6;
   padding: 0;
   list-style: none;
-  border-top: 1px solid rgb(36 27 22 / 0.15);
+  border-top: 1px solid rgb(54 6 6 / 0.15);
 }
 
 .list li {
-  border-bottom: 1px solid rgb(36 27 22 / 0.15);
+  border-bottom: 1px solid rgb(54 6 6 / 0.15);
 }
 
 .item {
@@ -80,7 +81,7 @@
 .index {
   font-size: var(--text-eyebrow);
   letter-spacing: var(--tracking-wider);
-  color: var(--color-gold);
+  color: var(--color-bordeaux);
 }
 
 .name {

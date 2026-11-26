@@ -17,7 +17,7 @@
 
 .eyebrow {
   margin-bottom: var(--space-4);
-  color: var(--color-gold);
+  color: var(--color-bordeaux);
 }
 
 .details {
@@ -30,7 +30,7 @@
   font-size: var(--text-eyebrow);
   letter-spacing: var(--tracking-widest);
   text-transform: uppercase;
-  color: var(--color-gold);
+  color: var(--color-bordeaux);
 }
 
 .details dd {
@@ -51,7 +51,8 @@
 }
 
 .link:hover {
-  color: var(--color-gold);
+  color: var(--color-ink);
+  border-bottom-color: var(--color-bordeaux);
 }
 
 /* Overlapping polaroids; positions are % of the collage box so it scales down cleanly. */
@@ -66,8 +67,8 @@
   width: 52%;
   margin: 0;
   padding: 10px 10px 0;
-  background-color: #fffdf9;
-  box-shadow: 0 10px 24px rgb(25 18 13 / 0.16);
+  background-color: var(--color-bg);
+  box-shadow: 0 10px 24px rgb(54 6 6 / 0.16);
   transition:
     transform var(--duration-slow) var(--ease-out),
     box-shadow var(--duration-slow) var(--ease-out);
@@ -76,7 +77,6 @@
 .polaroid figcaption {
   padding: var(--space-3) var(--space-1) var(--space-4);
   font-size: var(--text-small);
-  font-style: italic;
   text-align: center;
   color: var(--color-muted);
 }
@@ -84,7 +84,7 @@
 .polaroid:hover {
   z-index: 3;
   transform: rotate(0deg) scale(1.06);
-  box-shadow: 0 24px 48px rgb(25 18 13 / 0.28);
+  box-shadow: 0 24px 48px rgb(54 6 6 / 0.28);
 }
 
 .p1 {

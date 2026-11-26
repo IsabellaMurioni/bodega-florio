@@ -32,13 +32,11 @@
 
 .note {
   font-size: var(--text-small);
-  font-style: italic;
   color: var(--color-muted);
 }
 
 .pending {
   font-size: var(--text-lead);
-  font-style: italic;
   color: var(--color-muted);
 }
 

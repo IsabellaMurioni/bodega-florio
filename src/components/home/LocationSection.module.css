@@ -20,7 +20,7 @@
 
 .eyebrow {
   margin-bottom: var(--space-4);
-  color: var(--color-gold);
+  color: var(--color-bordeaux);
 }
 
 .body {
@@ -42,7 +42,8 @@
 }
 
 .link:hover {
-  color: var(--color-gold);
+  color: var(--color-ink);
+  border-bottom-color: var(--color-bordeaux);
 }
 
 @media (max-width: 760px) {

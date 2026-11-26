@@ -15,7 +15,6 @@
 .sampleNote {
   margin-top: var(--space-4);
   font-size: var(--text-small);
-  font-style: italic;
   color: var(--color-muted);
 }
 
@@ -24,8 +23,8 @@
 }
 
 .featured blockquote p {
+  font-family: var(--font-heading);
   font-size: var(--text-h2);
-  font-style: italic;
   line-height: var(--leading-snug);
   color: var(--color-bordeaux);
 }
@@ -54,14 +53,13 @@
 
 .quote blockquote p {
   font-size: var(--text-lead);
-  font-style: italic;
   color: var(--color-ink);
 }
 
 .stars {
   font-size: var(--text-small);
   letter-spacing: 0.2em;
-  color: var(--color-gold);
+  color: var(--color-bordeaux);
 }
 
 .author {

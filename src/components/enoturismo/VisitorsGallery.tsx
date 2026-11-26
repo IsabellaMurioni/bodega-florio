@@ -10,9 +10,9 @@ const gradients = [
   'linear-gradient(160deg, #6b7a4a, #2c3319)',
   'linear-gradient(160deg, #a0523d, #4a1d14)',
   'linear-gradient(150deg, #b5aa98, #5f564a)',
-  'linear-gradient(160deg, #5c1a2b, #20090f)',
+  'linear-gradient(160deg, #6f0025, #360606)',
   'linear-gradient(150deg, #d4a373, #7a4b2a)',
-  'linear-gradient(160deg, #8a7a66, #3b3127)',
+  'linear-gradient(160deg, #765848, #3b3127)',
   'linear-gradient(150deg, #c08552, #5e3023)',
 ];
 

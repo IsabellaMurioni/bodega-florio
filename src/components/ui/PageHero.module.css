@@ -1,4 +1,5 @@
 .hero {
+  --color-focus: var(--color-gold);
   position: relative;
   display: flex;
   align-items: flex-end;
@@ -12,7 +13,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 35%, rgb(25 18 13 / 0.55));
+  background: linear-gradient(180deg, transparent 35%, rgb(54 6 6 / 0.55));
   pointer-events: none;
 }
 
@@ -21,7 +22,7 @@
 }
 
 .bordeaux {
-  background: linear-gradient(160deg, #5c1a2b, #20090f);
+  background: linear-gradient(160deg, #6f0025, #360606);
 }
 
 .gold {
@@ -56,8 +57,7 @@
   bottom: var(--space-5);
   z-index: 1;
   font-size: var(--text-small);
-  font-style: italic;
-  color: rgb(243 236 224 / 0.7);
+  color: rgb(248 244 234 / 0.7);
 }
 
 @media (max-width: 760px) {
@@ -84,10 +84,13 @@
 }
 
 .ochre {
-  background: linear-gradient(160deg, #b08d3f, #5c4620);
+  background: linear-gradient(160deg, #c49d55, #5c4620);
 }
 
-/* The gold eyebrow would disappear on the ochre gradient. */
+/* The gold eyebrow would disappear on the light/ochre gradients. */
+.gold .eyebrow,
+.sparkling .eyebrow,
+.blush .eyebrow,
 .ochre .eyebrow {
-  color: rgb(243 236 224 / 0.85);
+  color: rgb(248 244 234 / 0.85);
 }

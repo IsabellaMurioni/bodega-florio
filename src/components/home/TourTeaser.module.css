@@ -24,7 +24,8 @@
 }
 
 .link:hover {
-  color: var(--color-gold);
+  color: var(--color-ink);
+  border-bottom-color: var(--color-gold);
 }
 
 /* Asymmetric collage on a 12-column grid. */

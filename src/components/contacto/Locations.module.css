@@ -25,7 +25,6 @@
 
 .address {
   font-size: var(--text-lead);
-  font-style: italic;
   color: var(--color-bordeaux);
 }
 
@@ -35,8 +34,7 @@
 
 .pending {
   font-size: var(--text-small);
-  font-style: italic;
-  color: var(--color-gold);
+  color: var(--color-bordeaux);
 }
 
 .link {
@@ -52,7 +50,8 @@
 }
 
 .link:hover {
-  color: var(--color-gold);
+  color: var(--color-ink);
+  border-bottom-color: var(--color-bordeaux);
 }
 
 @media (max-width: 760px) {

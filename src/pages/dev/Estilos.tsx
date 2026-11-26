@@ -9,25 +9,27 @@ import WhatsAppIcon from '@/components/ui/icons/WhatsAppIcon';
 import './Estilos.css';
 
 const colors = [
-  { name: 'bg', value: '#F3ECE0' },
-  { name: 'surface', value: '#FFFFFF' },
-  { name: 'ink', value: '#241B16' },
-  { name: 'inkblack', value: '#19120D' },
-  { name: 'bordeaux', value: '#5C1A2B' },
-  { name: 'gold', value: '#B08D3F' },
-  { name: 'muted', value: '#8A7A66' },
-  { name: 'glass', value: '#C9B27A' },
+  { name: 'bg', value: '#F8F4EA' },
+  { name: 'surface', value: '#F1EBDD' },
+  { name: 'ink', value: '#360606' },
+  { name: 'inkblack', value: '#360606' },
+  { name: 'black', value: '#000000' },
+  { name: 'bordeaux', value: '#6F0025' },
+  { name: 'gold', value: '#DDB972' },
+  { name: 'muted', value: '#765848' },
+  { name: 'on-dark-soft', value: '#E9DCC8' },
+  { name: 'on-dark-muted', value: '#BFA894' },
+  { name: 'glass', value: '#DDB972' },
 ];
 
 const scale = ['display', 'h1', 'h2', 'h3', 'lead', 'body', 'small', 'eyebrow'];
 
 const families = [
-  { label: 'Picaflor Display (72pt)', varName: '--font-display' },
-  { label: 'Picaflor (24pt)', varName: '--font-heading' },
-  { label: 'Garamontio', varName: '--font-body' },
+  { label: 'Krylon — display y títulos (400)', varName: '--font-display' },
+  { label: 'Neutral Sans — texto', varName: '--font-body' },
 ];
 
-const weights = [400, 500, 600, 700, 800];
+const weights = [400, 500, 600, 700, 800, 900];
 
 const placeholders: { tone: PlaceholderTone; label: string }[] = [
   { tone: 'vineyard', label: 'Viñedo con la Cordillera' },
@@ -68,10 +70,10 @@ function Estilos() {
           </div>
         ))}
         <div className="sg-family">
-          <span className="eyebrow">Garamontio — pesos 400–800 (normal / itálica)</span>
+          <span className="eyebrow">Neutral Sans — pesos 400–900</span>
           {weights.map((w) => (
             <p key={w} style={{ fontWeight: w, fontSize: 'var(--text-lead)' }}>
-              {w} — Uvas cosechadas a mano <em>desde los viñedos de la familia</em>
+              {w} — Uvas cosechadas a mano desde los viñedos de la familia
             </p>
           ))}
         </div>
@@ -83,11 +85,11 @@ function Estilos() {
           <div key={step} className="sg-scale-row">
             <code>--text-{step}</code>
             <span style={{ fontFamily: 'var(--font-display)', fontSize: `var(--text-${step})` }}>
-              Picaflor
+              Krylon Ñandú
             </span>
-            <span style={{ fontSize: `var(--text-${step})` }}>Garamontio</span>
-            <span style={{ fontSize: `var(--text-${step})` }}>
-              <em>Garamontio itálica</em>
+            <span style={{ fontSize: `var(--text-${step})` }}>Neutral Sans</span>
+            <span style={{ fontSize: `var(--text-${step})`, fontWeight: 700 }}>
+              Neutral Sans 700
             </span>
           </div>
         ))}

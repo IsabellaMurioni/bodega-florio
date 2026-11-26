@@ -3,9 +3,9 @@
 }
 
 .text {
+  font-family: var(--font-heading);
   max-width: 800px;
   font-size: var(--text-h3);
-  font-style: italic;
   line-height: var(--leading-snug);
   color: var(--color-bordeaux);
 }

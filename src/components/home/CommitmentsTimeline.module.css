@@ -33,7 +33,7 @@
   bottom: 0.4em;
   left: 0;
   width: 1px;
-  background-color: var(--color-gold);
+  background-color: var(--color-bordeaux);
 }
 
 .item {
@@ -59,7 +59,7 @@
   font-family: var(--font-display);
   font-size: var(--text-h2);
   line-height: 1;
-  color: var(--color-gold);
+  color: var(--color-bordeaux);
   opacity: 0.55;
 }
 

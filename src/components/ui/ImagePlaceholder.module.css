@@ -15,9 +15,8 @@
 
 .label {
   padding: var(--space-3) var(--space-4);
-  color: rgb(243 236 224 / 0.75);
+  color: rgb(248 244 234 / 0.75);
   font-size: var(--text-small);
-  font-style: italic;
 }
 
 .vineyard {
@@ -25,7 +24,7 @@
 }
 
 .bordeaux {
-  background: linear-gradient(160deg, #5c1a2b, #20090f);
+  background: linear-gradient(160deg, #6f0025, #360606);
 }
 
 .gold {
@@ -51,9 +50,9 @@
 /* Light tones need a darker label to stay legible. */
 .sparkling .label,
 .blush .label {
-  color: rgb(36 27 22 / 0.6);
+  color: rgb(54 6 6 / 0.6);
 }
 
 .ochre {
-  background: linear-gradient(160deg, #b08d3f, #5c4620);
+  background: linear-gradient(160deg, #c49d55, #5c4620);
 }

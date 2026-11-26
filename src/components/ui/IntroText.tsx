@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 import Reveal from '@/components/ui/Reveal';
 import styles from './IntroText.module.css';
 
-/** Large italic bordeaux intro paragraph used under inner-page heroes. */
+/** Large bordeaux intro paragraph (Krylon) used under inner-page heroes. */
 function IntroText({ children }: { children: ReactNode }) {
   return (
     <section className={styles.section} aria-label="Introducción">

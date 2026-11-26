@@ -28,7 +28,7 @@
   font-size: var(--text-eyebrow);
   letter-spacing: var(--tracking-widest);
   text-transform: uppercase;
-  color: var(--color-gold);
+  color: var(--color-bordeaux);
 }
 
 .list dd {
@@ -38,7 +38,7 @@
 
 .list a {
   text-decoration: none;
-  border-bottom: 1px solid rgb(36 27 22 / 0.2);
+  border-bottom: 1px solid rgb(54 6 6 / 0.2);
 }
 
 .list a:hover {

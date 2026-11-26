@@ -30,21 +30,18 @@
 
 .pending {
   margin-top: var(--space-4);
-  font-style: italic;
   color: var(--color-muted);
 }
 
 .note {
   margin-top: var(--space-5);
   font-size: var(--text-small);
-  font-style: italic;
   color: var(--color-bordeaux);
 }
 
 .devNote {
   margin-top: var(--space-7);
   font-size: var(--text-small);
-  font-style: italic;
   color: var(--color-muted);
 }
 

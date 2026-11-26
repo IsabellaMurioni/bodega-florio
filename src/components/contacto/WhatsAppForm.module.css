@@ -58,7 +58,7 @@
   align-items: center;
   gap: var(--space-2);
   padding: 0.6em 1.2em;
-  border: 1px solid rgb(36 27 22 / 0.2);
+  border: 1px solid rgb(54 6 6 / 0.2);
   border-radius: var(--radius-pill);
   font-size: var(--text-small);
   color: var(--color-muted);
@@ -71,7 +71,7 @@
 
 .option:hover {
   color: var(--color-ink);
-  border-color: rgb(36 27 22 / 0.4);
+  border-color: rgb(54 6 6 / 0.4);
 }
 
 /* Visually hidden but still focusable and keyboard-operable. */
@@ -85,12 +85,12 @@
 
 .option:has(.radio:checked) {
   border-color: var(--color-bordeaux);
-  background-color: rgb(176 141 63 / 0.1);
+  background-color: rgb(221 185 114 / 0.1);
   color: var(--color-bordeaux);
 }
 
 .option:has(.radio:focus-visible) {
-  outline: 2px solid var(--color-gold);
+  outline: 2px solid var(--color-focus);
   outline-offset: 3px;
 }
 
@@ -112,7 +112,7 @@
 .input {
   width: 100%;
   padding: 0.85em 1.1em;
-  border: 1px solid rgb(36 27 22 / 0.2);
+  border: 1px solid rgb(54 6 6 / 0.2);
   border-radius: var(--radius-md);
   background-color: var(--color-bg);
   font-size: var(--text-body);
@@ -123,14 +123,14 @@
 }
 
 .input::placeholder {
-  color: rgb(138 122 102 / 0.8);
+  color: rgb(118 88 72 / 0.8);
 }
 
 .input:focus,
 .input:focus-visible {
   outline: none;
-  border-color: var(--color-gold);
-  box-shadow: 0 0 0 3px rgb(176 141 63 / 0.22);
+  border-color: var(--color-bordeaux);
+  box-shadow: 0 0 0 3px rgb(221 185 114 / 0.45);
 }
 
 .input[aria-invalid='true'] {
@@ -149,8 +149,8 @@
 }
 
 .quote {
+  font-family: var(--font-heading);
   font-size: var(--text-h3);
-  font-style: italic;
   line-height: var(--leading-snug);
   color: var(--color-bordeaux);
 }

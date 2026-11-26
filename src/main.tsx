@@ -10,11 +10,11 @@ import Vinos from '@/pages/Vinos';
 import Reservas from '@/pages/Reservas';
 import Contacto from '@/pages/Contacto';
 import NotFound from '@/pages/NotFound';
-import picaflorDisplayUrl from '@/assets/fonts/picaflor/Picaflor-72pt.woff2?url';
-import garamontioUrl from '@/assets/fonts/garamontio/garamontio.woff2?url';
+import krylonUrl from '@/assets/fonts/krylon/Krylon-Regular.woff2?url';
+import neutralSansUrl from '@/assets/fonts/neutral-sans/NeutralSansVF.woff2?url';
 
-// Preload the two above-the-fold fonts (same hashed URLs the @font-face rules resolve to).
-for (const href of [picaflorDisplayUrl, garamontioUrl]) {
+// Preload both brand fonts (same hashed URLs the @font-face rules resolve to).
+for (const href of [krylonUrl, neutralSansUrl]) {
   preload(href, { as: 'font', type: 'font/woff2', crossOrigin: 'anonymous' });
 }
 

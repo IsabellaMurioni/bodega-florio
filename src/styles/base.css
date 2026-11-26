@@ -32,6 +32,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  /* Krylon has one weight and neither font has italics: never fake them. */
+  font-synthesis: none;
 }
 
 h1,
@@ -105,7 +107,7 @@ button {
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-gold);
+  outline: 2px solid var(--color-focus);
   outline-offset: 3px;
 }
 

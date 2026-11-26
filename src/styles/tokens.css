@@ -10,28 +10,34 @@
 
 :root {
   /* Colors */
-  --color-bg: #f3ece0;
-  --color-surface: #ffffff;
-  --color-ink: #241b16;
-  --color-inkblack: #19120d;
-  --color-bordeaux: #5c1a2b;
-  --color-gold: #b08d3f;
-  --color-muted: #8a7a66;
-  --color-glass: #c9b27a;
-  --color-glass-fill: rgb(201 178 122 / 0.22);
-  --color-glass-border: rgb(201 178 122 / 0.55);
+  --color-bg: #f8f4ea; /* ivory: every light background */
+  --color-surface: #f1ebdd; /* deeper ivory for alternating sections */
+  --color-ink: #360606; /* body text on light */
+  --color-inkblack: #360606; /* dark bands (hero, metrics, footer) */
+  --color-black: #000000;
+  --color-bordeaux: #6f0025;
+  --color-gold: #ddb972; /* text only on dark backgrounds; lines/borders on light */
+  --color-muted: #765848; /* secondary text on light: 5.8:1 on bg, 5.4:1 on surface */
+  --color-on-dark-soft: #e9dcc8; /* body text on dark: 13:1 on inkblack */
+  --color-on-dark-muted: #bfa894; /* secondary text on dark: 7.8:1 on inkblack */
+  --color-focus: var(--color-bordeaux); /* dark sections override it with gold */
+  --color-glass: #ddb972;
+  --color-glass-fill: rgb(221 185 114 / 0.22);
+  --color-glass-fill-hover: rgb(221 185 114 / 0.32);
+  --color-glass-border: rgb(221 185 114 / 0.6);
 
   /* Font families */
-  --font-display: 'Picaflor Display', 'Picaflor', Georgia, 'Times New Roman', serif;
-  --font-heading: 'Picaflor', 'Picaflor Display', Georgia, 'Times New Roman', serif;
-  --font-body: 'Garamontio', Garamond, 'EB Garamond', Georgia, 'Times New Roman', serif;
+  --font-display: 'Krylon', 'Arial Narrow', Arial, sans-serif;
+  --font-heading: 'Krylon', 'Arial Narrow', Arial, sans-serif;
+  --font-body: 'Neutral Sans', system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
 
-  /* Font weights (Garamontio variable range 400-800) */
+  /* Font weights (Neutral Sans variable range 400-900; Krylon is 400 only) */
   --weight-regular: 400;
   --weight-medium: 500;
   --weight-semibold: 600;
   --weight-bold: 700;
-  --weight-black: 800;
+  --weight-extrabold: 800;
+  --weight-black: 900;
 
   /* Fluid type scale (min at ~360px viewport, max at ~1280px) */
   --text-eyebrow: clamp(0.75rem, 0.71rem + 0.18vw, 0.8125rem);
@@ -90,6 +96,6 @@
   --duration-slow: 500ms;
 
   /* Shadows */
-  --shadow-soft: 0 6px 20px rgb(25 18 13 / 0.12);
-  --shadow-lift: 0 10px 28px rgb(25 18 13 / 0.18);
+  --shadow-soft: 0 6px 20px rgb(54 6 6 / 0.12);
+  --shadow-lift: 0 10px 28px rgb(54 6 6 / 0.18);
 }

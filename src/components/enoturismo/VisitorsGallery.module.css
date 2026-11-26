@@ -7,7 +7,6 @@
 .hint {
   margin-top: var(--space-4);
   font-size: var(--text-small);
-  font-style: italic;
   color: var(--color-muted);
 }
 
@@ -38,7 +37,7 @@
   aspect-ratio: 1 / 1;
   padding: 0;
   border: 0;
-  box-shadow: 0 6px 16px rgb(25 18 13 / 0.14);
+  box-shadow: 0 6px 16px rgb(54 6 6 / 0.14);
   transition:
     transform var(--duration-base) var(--ease-out),
     box-shadow var(--duration-base) var(--ease-out);
@@ -70,7 +69,7 @@
 }
 
 .tile:hover {
-  box-shadow: 0 12px 24px rgb(25 18 13 / 0.22);
+  box-shadow: 0 12px 24px rgb(54 6 6 / 0.22);
 }
 
 .grid li .tile[aria-pressed='true'] {
@@ -78,16 +77,15 @@
   transform: rotate(0deg) scale(1.05);
   box-shadow:
     0 0 0 3px var(--color-gold),
-    0 14px 28px rgb(25 18 13 / 0.24);
+    0 14px 28px rgb(54 6 6 / 0.24);
 }
 
 .tileLabel {
   padding: var(--space-2) var(--space-3);
   font-size: 0.72rem;
-  font-style: italic;
   line-height: 1.3;
   text-align: left;
-  color: rgb(243 236 224 / 0.8);
+  color: rgb(248 244 234 / 0.8);
 }
 
 .spotlightInner {
@@ -97,7 +95,7 @@
   align-items: center;
   margin: 0;
   padding-top: var(--space-7);
-  border-top: 1px solid rgb(36 27 22 / 0.12);
+  border-top: 1px solid rgb(54 6 6 / 0.12);
   animation: fade-in var(--duration-slow) var(--ease-out);
 }
 
@@ -123,8 +121,8 @@
 }
 
 .quote p {
+  font-family: var(--font-heading);
   font-size: var(--text-h2);
-  font-style: italic;
   line-height: var(--leading-snug);
   color: var(--color-bordeaux);
 }
@@ -140,7 +138,6 @@
   max-width: 44rem;
   margin-top: var(--space-7);
   font-size: var(--text-small);
-  font-style: italic;
   color: var(--color-muted);
 }
 
@@ -155,6 +152,7 @@
   }
 
   .quote p {
+    font-family: var(--font-heading);
     font-size: var(--text-h3);
   }
 
