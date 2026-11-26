@@ -10,15 +10,16 @@
 
 :root {
   /* Colors */
-  --color-bg: #f8f4ea; /* ivory: every light background */
-  --color-surface: #f1ebdd; /* deeper ivory for alternating sections */
+  --color-bg: #ffffff; /* pure white: every light background */
+  --color-surface: #ffffff; /* sections are separated by --color-rule, not by a tint */
+  --color-rule: rgb(54 6 6 / 0.1); /* thin 1px section dividers on white */
   --color-ink: #360606; /* body text on light */
   --color-inkblack: #360606; /* dark bands (hero, metrics, footer) */
   --color-black: #000000;
   --color-bordeaux: #6f0025;
   --color-gold: #ddb972; /* text only on dark backgrounds; lines/borders on light */
-  --color-muted: #765848; /* secondary text on light: 5.8:1 on bg, 5.4:1 on surface */
-  --color-on-dark-soft: #e9dcc8; /* body text on dark: 13:1 on inkblack */
+  --color-muted: #765848; /* secondary text on white: 6.4:1 */
+  --color-on-dark-soft: #f3eded; /* soft white for body text on dark: 14:1 on inkblack */
   --color-on-dark-muted: #bfa894; /* secondary text on dark: 7.8:1 on inkblack */
   --color-focus: var(--color-bordeaux); /* dark sections override it with gold */
   --color-glass: #ddb972;

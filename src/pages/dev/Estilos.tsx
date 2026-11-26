@@ -9,15 +9,15 @@ import WhatsAppIcon from '@/components/ui/icons/WhatsAppIcon';
 import './Estilos.css';
 
 const colors = [
-  { name: 'bg', value: '#F8F4EA' },
-  { name: 'surface', value: '#F1EBDD' },
+  { name: 'bg', value: '#FFFFFF' },
+  { name: 'rule', value: 'ink 10%' },
   { name: 'ink', value: '#360606' },
   { name: 'inkblack', value: '#360606' },
   { name: 'black', value: '#000000' },
   { name: 'bordeaux', value: '#6F0025' },
   { name: 'gold', value: '#DDB972' },
   { name: 'muted', value: '#765848' },
-  { name: 'on-dark-soft', value: '#E9DCC8' },
+  { name: 'on-dark-soft', value: '#F3EDED' },
   { name: 'on-dark-muted', value: '#BFA894' },
   { name: 'glass', value: '#DDB972' },
 ];

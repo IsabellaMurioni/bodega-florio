@@ -64,6 +64,7 @@
 }
 
 .sg-buttons--light {
+  border: 1px solid var(--color-rule);
   background: var(--color-surface);
 }
 

@@ -50,3 +50,8 @@
 .btn-glass--on-light:hover {
   color: var(--color-bordeaux);
 }
+
+/* On pure white the translucent gold would wash out: use a solid gold border. */
+.btn-glass--on-light {
+  border-color: var(--color-gold);
+}

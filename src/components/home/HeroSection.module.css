@@ -56,7 +56,7 @@
   letter-spacing: var(--tracking-wider);
   text-transform: uppercase;
   text-decoration: none;
-  border-bottom: 1px solid rgb(248 244 234 / 0.4);
+  border-bottom: 1px solid rgb(255 255 255 / 0.4);
   padding-bottom: 2px;
 }
 
@@ -75,7 +75,7 @@
   letter-spacing: var(--tracking-widest);
   text-transform: uppercase;
   text-decoration: none;
-  color: rgb(248 244 234 / 0.65);
+  color: rgb(255 255 255 / 0.65);
   writing-mode: vertical-rl;
 }
 
@@ -88,7 +88,7 @@
   width: 1px;
   height: 56px;
   overflow: hidden;
-  background-color: rgb(248 244 234 / 0.2);
+  background-color: rgb(255 255 255 / 0.2);
 }
 
 .scrollLine::after {

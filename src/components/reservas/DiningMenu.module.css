@@ -1,6 +1,6 @@
 .section {
   padding-block: var(--section-padding);
-  background-color: var(--color-surface);
+  border-top: 1px solid var(--color-rule);
 }
 
 .columns {
