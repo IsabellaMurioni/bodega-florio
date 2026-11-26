@@ -1,5 +1,5 @@
 import { Link } from 'react-router';
-import logoFooter from '@/assets/brand/logo-footer.png';
+import logoWhite from '@/assets/brand/logo-white.png';
 import { contactReasons, emails, locations } from '@/data/contact';
 import { INSTAGRAM_VINOTECA_URL } from '@/services/links';
 import styles from './Footer.module.css';
@@ -22,7 +22,7 @@ function Footer() {
       <div className={styles.columns}>
         <div className={styles.col}>
           <Link to="/" className={styles.logo}>
-            <img src={logoFooter} alt="Bodega Florio" width={281} height={96} />
+            <img src={logoWhite} alt="Bodega Florio" width={410} height={140} />
           </Link>
           <p className={styles.tagline}>Bodega Florio - Maipú, Mendoza, desde 1912</p>
         </div>

@@ -30,7 +30,13 @@
 
 .logo img {
   width: auto;
-  height: 44px;
+  height: 64px;
+}
+
+@media (max-width: 760px) {
+  .logo img {
+    height: 52px;
+  }
 }
 
 .tagline {

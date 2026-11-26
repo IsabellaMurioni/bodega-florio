@@ -77,8 +77,14 @@
 
   /* Layout */
   --container-max: 1220px;
-  /* Height of the sticky site header (Nav: 20px padding x2 + 36px logo + 1px border). */
-  --header-height: 77px;
+  /* Sticky site header. Nav sets data-nav="compact" on <html> once the page is scrolled;
+     --header-height always holds the current height (sticky offsets read it). */
+  --nav-h-top: 96px;
+  --nav-h-compact: 64px;
+  --nav-logo-top: 52px;
+  --nav-logo-compact: 36px;
+  --nav-duration: 350ms;
+  --header-height: var(--nav-h-top);
   --gutter: clamp(20px, 5vw, 48px);
   --section-padding: clamp(4rem, 2.5rem + 6vw, 8rem);
   --section-padding-sm: clamp(2.5rem, 1.75rem + 3vw, 4.5rem);
@@ -101,9 +107,15 @@
   --shadow-lift: 0 10px 28px rgb(54 6 6 / 0.18);
 }
 
-/* Mobile: logo shrinks to 30px; the 32px burger sets the height (20px padding x2 + 32px + 1px border). */
 @media (max-width: 760px) {
   :root {
-    --header-height: 73px;
+    --nav-h-top: 76px;
+    --nav-h-compact: 58px;
+    --nav-logo-top: 40px;
+    --nav-logo-compact: 30px;
   }
+}
+
+:root[data-nav='compact'] {
+  --header-height: var(--nav-h-compact);
 }

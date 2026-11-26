@@ -1,9 +1,33 @@
+/* Fixed (not sticky) so its height change never shifts the page; Layout reserves
+   --nav-h-top above <main>. */
 .header {
-  position: sticky;
+  --color-focus: var(--color-gold);
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 100;
-  background-color: var(--color-bg);
-  border-bottom: 1px solid rgb(54 6 6 / 0.1);
+  color: var(--color-bg);
+}
+
+/* Background on a pseudo-element: a backdrop-filter on .header itself would trap the
+   fixed mobile overlay inside the bar. */
+.header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-color: var(--color-bordeaux);
+  transition:
+    background-color var(--nav-duration) var(--ease-out),
+    box-shadow var(--nav-duration) var(--ease-out);
+}
+
+:root[data-nav='compact'] .header::before {
+  background-color: rgb(111 0 37 / 0.92);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+  backdrop-filter: blur(12px) saturate(140%);
+  box-shadow: 0 6px 20px rgb(0 0 0 / 0.18);
 }
 
 .bar {
@@ -11,9 +35,11 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--space-5);
+  height: var(--header-height);
   max-width: calc(var(--container-max) + 2 * var(--gutter));
   margin-inline: auto;
-  padding: 20px var(--gutter);
+  padding-inline: var(--gutter);
+  transition: height var(--nav-duration) var(--ease-out);
 }
 
 .logo {
@@ -23,7 +49,12 @@
 
 .logo img {
   width: auto;
-  height: 36px;
+  height: var(--nav-logo-top);
+  transition: height var(--nav-duration) var(--ease-out);
+}
+
+:root[data-nav='compact'] .logo img {
+  height: var(--nav-logo-compact);
 }
 
 .links {
@@ -36,21 +67,39 @@
 }
 
 .link {
-  color: var(--color-ink);
-  font-size: 0.76rem;
-  font-weight: var(--weight-semibold);
-  letter-spacing: 0.12em;
+  position: relative;
+  display: inline-block;
+  padding-block: 6px;
+  color: var(--color-bg);
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  letter-spacing: 0.16em;
+  line-height: 1;
   text-transform: uppercase;
   text-decoration: none;
-  transition: color var(--duration-fast) var(--ease-out);
 }
 
-.link:hover {
-  color: var(--color-bordeaux);
+/* Gold underline that grows from the center; stays on the active page. */
+.link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0.16em; /* compensate the trailing letter-spacing */
+  bottom: 0;
+  height: 1px;
+  background-color: var(--color-gold);
+  transform: scaleX(0);
+  transition: transform var(--duration-base) var(--ease-out);
 }
 
+.link:hover,
 .link.active {
-  color: var(--color-bordeaux);
+  color: var(--color-bg);
+}
+
+.link:hover::after,
+.link.active::after {
+  transform: scaleX(1);
 }
 
 .actions {
@@ -62,12 +111,12 @@
 .cart {
   display: inline-flex;
   padding: var(--space-1);
-  color: var(--color-ink);
+  color: var(--color-bg);
   transition: color var(--duration-fast) var(--ease-out);
 }
 
 .cart:hover {
-  color: var(--color-bordeaux);
+  color: var(--color-gold);
 }
 
 /* Burger: 3 lines of 22x2px, 5px apart; turns into an X when open. */
@@ -79,7 +128,7 @@
   margin-right: calc(-1 * var(--space-2));
   border: 0;
   background: none;
-  color: var(--color-ink);
+  color: var(--color-bg);
 }
 
 .burger span {
@@ -118,10 +167,6 @@
     display: inline-flex;
   }
 
-  .logo img {
-    height: 30px;
-  }
-
   .overlay {
     position: fixed;
     inset: 0;
@@ -129,7 +174,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--color-bg);
+    background-color: var(--color-bordeaux);
     opacity: 0;
     visibility: hidden;
     transition:
@@ -182,9 +227,8 @@
   }
 
   .overlayLinks .link {
-    font-family: var(--font-heading);
-    font-size: clamp(1.3rem, 5vw, 1.9rem);
-    font-weight: var(--weight-regular);
-    letter-spacing: 0.1em;
+    padding-block: 8px;
+    font-size: clamp(1.6rem, 7vw, 2.25rem);
+    letter-spacing: 0.12em;
   }
 }

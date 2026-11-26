@@ -1,5 +1,5 @@
 // Dev-only style guide. Registered in src/main.tsx only when import.meta.env.DEV is true.
-import logoFooter from '@/assets/brand/logo-footer.png';
+import logoWhite from '@/assets/brand/logo-white.png';
 import logoNav from '@/assets/brand/logo-nav.png';
 import Button from '@/components/ui/Button';
 import ImagePlaceholder, { type PlaceholderTone } from '@/components/ui/ImagePlaceholder';
@@ -53,12 +53,16 @@ function Estilos() {
       <section className="sg-section">
         <h2>Logo</h2>
         <div className="sg-buttons sg-buttons--light">
-          <img src={logoNav} alt="Bodega Florio (nav)" style={{ height: 48, width: 'auto' }} />
+          <img
+            src={logoNav}
+            alt="Bodega Florio (bordeaux, light backgrounds)"
+            style={{ height: 48, width: 'auto' }}
+          />
         </div>
         <div className="sg-buttons sg-buttons--dark">
           <img
-            src={logoFooter}
-            alt="Bodega Florio (footer)"
+            src={logoWhite}
+            alt="Bodega Florio (white: nav and footer)"
             style={{ height: 48, width: 'auto' }}
           />
         </div>

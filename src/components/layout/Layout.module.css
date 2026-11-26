@@ -22,5 +22,7 @@
 }
 
 .main {
+  /* Room for the fixed nav in its top (tallest) state. */
+  padding-top: var(--nav-h-top);
   outline: none;
 }

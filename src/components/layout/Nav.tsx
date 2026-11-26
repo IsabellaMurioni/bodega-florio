@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router';
-import logoNav from '@/assets/brand/logo-nav.png';
+import logoWhite from '@/assets/brand/logo-white.png';
 import CartIcon from '@/components/ui/icons/CartIcon';
 import { TIENDA_URL } from '@/services/links';
 import styles from './Nav.module.css';
@@ -14,6 +14,10 @@ const links = [
 
 const MENU_ID = 'menu-mobile';
 
+// Compact the bar past COMPACT_AT; return to the top state below EXPAND_AT (hysteresis avoids flicker).
+const COMPACT_AT = 72;
+const EXPAND_AT = 48;
+
 const linkClass = ({ isActive }: { isActive: boolean }) =>
   isActive ? `${styles.link} ${styles.active}` : styles.link;
 
@@ -25,6 +29,35 @@ function Nav() {
   const burgerRef = useRef<HTMLButtonElement>(null);
 
   const close = () => setOpenOn(null);
+
+  // Scroll state lives on <html data-nav> so CSS (including --header-height) can follow it.
+  useEffect(() => {
+    const root = document.documentElement;
+    let compact = false;
+    let frame = 0;
+
+    const update = () => {
+      frame = 0;
+      const y = window.scrollY;
+      const next = compact ? y > EXPAND_AT : y > COMPACT_AT;
+      if (next !== compact) {
+        compact = next;
+        if (compact) root.dataset.nav = 'compact';
+        else delete root.dataset.nav;
+      }
+    };
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      cancelAnimationFrame(frame);
+      delete root.dataset.nav;
+    };
+  }, []);
 
   useEffect(() => {
     if (!open) return;
@@ -55,7 +88,7 @@ function Nav() {
     <header className={`${styles.header} ${open ? styles.isOpen : ''}`}>
       <nav className={styles.bar} aria-label="Principal">
         <Link to="/" className={styles.logo} onClick={close}>
-          <img src={logoNav} alt="Bodega Florio" width={281} height={96} />
+          <img src={logoWhite} alt="Bodega Florio" width={410} height={140} />
         </Link>
 
         <ul className={styles.links}>

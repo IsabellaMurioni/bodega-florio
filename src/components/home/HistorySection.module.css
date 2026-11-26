@@ -1,6 +1,6 @@
 .section {
   padding-block: var(--section-padding);
-  scroll-margin-top: var(--header-height);
+  scroll-margin-top: var(--nav-h-compact);
 }
 
 .grid {
