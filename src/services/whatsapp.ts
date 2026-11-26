@@ -11,5 +11,7 @@ export function buildContactMessage(
   contact: string,
   message: string,
 ): string {
-  return `Hola, soy ${name}. Les escribo por: ${reasonLabel}.\n\n${message}\n\nContacto: ${contact}`;
+  const text = `Hola, soy ${name}. Les escribo por: ${reasonLabel}.\n\n${message}`;
+  // The contact line is optional in the form; skip it when empty.
+  return contact.trim() ? `${text}\n\nContacto: ${contact}` : text;
 }

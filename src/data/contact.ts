@@ -1,3 +1,4 @@
+import { BODEGA_MAPS_URL } from '@/services/links';
 import type { ContactReason, Location } from '@/types';
 
 // TODO: numbers and emails not yet verified with the winery.
@@ -19,12 +20,14 @@ export const locations: Location[] = [
     name: 'Bodega Florio',
     address: 'Cruz de Piedra, Maipú',
     city: 'Mendoza',
+    hours: 'Lunes a sábado, 10 a 18 hs.',
+    mapsUrl: BODEGA_MAPS_URL,
   },
   {
     name: 'Vinoteca Florio',
     address: 'Av. Don Pedro de Mendoza 1713, La Boca',
     city: 'CABA',
-    hours: 'Todos los días, de 11 a 17 hs.',
+    hours: 'Todos los días, 11 a 17 hs.',
     instagram: '@vinotecaflorio',
   },
 ];

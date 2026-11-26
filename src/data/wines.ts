@@ -189,7 +189,7 @@ export const wines: Wine[] = [
     category: 'industriales',
     description: OPORTO_INDUSTRIAL,
     cta: 'consultar',
-    buyUrl: '/contacto',
+    buyUrl: '/contacto?motivo=mayorista',
   },
   {
     id: 'oporto-x20l',
@@ -197,7 +197,7 @@ export const wines: Wine[] = [
     category: 'industriales',
     description: OPORTO_INDUSTRIAL,
     cta: 'consultar',
-    buyUrl: '/contacto',
+    buyUrl: '/contacto?motivo=mayorista',
   },
   {
     id: 'marsala-x5l',
@@ -205,7 +205,7 @@ export const wines: Wine[] = [
     category: 'industriales',
     description: MARSALA_INDUSTRIAL,
     cta: 'consultar',
-    buyUrl: '/contacto',
+    buyUrl: '/contacto?motivo=mayorista',
   },
   {
     id: 'marsala-x20l',
@@ -213,6 +213,6 @@ export const wines: Wine[] = [
     category: 'industriales',
     description: MARSALA_INDUSTRIAL,
     cta: 'consultar',
-    buyUrl: '/contacto',
+    buyUrl: '/contacto?motivo=mayorista',
   },
 ];
