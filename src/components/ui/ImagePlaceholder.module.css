@@ -53,3 +53,7 @@
 .blush .label {
   color: rgb(36 27 22 / 0.6);
 }
+
+.ochre {
+  background: linear-gradient(160deg, #b08d3f, #5c4620);
+}

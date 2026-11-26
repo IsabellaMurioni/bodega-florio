@@ -82,3 +82,12 @@
 .blush {
   background: linear-gradient(150deg, #e7c9b0, #a9714f);
 }
+
+.ochre {
+  background: linear-gradient(160deg, #b08d3f, #5c4620);
+}
+
+/* The gold eyebrow would disappear on the ochre gradient. */
+.ochre .eyebrow {
+  color: rgb(243 236 224 / 0.85);
+}

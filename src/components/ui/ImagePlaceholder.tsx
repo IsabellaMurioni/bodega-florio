@@ -1,7 +1,7 @@
 import styles from './ImagePlaceholder.module.css';
 
 export type PlaceholderTone =
-  'vineyard' | 'bordeaux' | 'gold' | 'stone' | 'sparkling' | 'red' | 'blush';
+  'vineyard' | 'bordeaux' | 'gold' | 'stone' | 'sparkling' | 'red' | 'blush' | 'ochre';
 
 interface ImagePlaceholderProps {
   /** What the photo will show; used as the accessible name and the visible label. */
