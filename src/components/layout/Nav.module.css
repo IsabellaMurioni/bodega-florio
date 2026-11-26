@@ -1,5 +1,5 @@
-/* Fixed (not sticky) so its height change never shifts the page; Layout reserves
-   --nav-h-top above <main>. */
+/* Fixed (not sticky) so its size change never shifts the page. Top state: transparent bar
+   over the hero. Scrolled (html[data-nav='compact']): the bar floats as a glass capsule. */
 .header {
   --color-focus: var(--color-gold);
   position: fixed;
@@ -7,27 +7,13 @@
   left: 0;
   right: 0;
   z-index: 100;
+  padding: 0;
   color: var(--color-bg);
+  transition: padding var(--nav-duration) var(--ease-out);
 }
 
-/* Background on a pseudo-element: a backdrop-filter on .header itself would trap the
-   fixed mobile overlay inside the bar. */
-.header::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background-color: var(--color-bordeaux);
-  transition:
-    background-color var(--nav-duration) var(--ease-out),
-    box-shadow var(--nav-duration) var(--ease-out);
-}
-
-:root[data-nav='compact'] .header::before {
-  background-color: rgb(111 0 37 / 0.92);
-  -webkit-backdrop-filter: blur(12px) saturate(140%);
-  backdrop-filter: blur(12px) saturate(140%);
-  box-shadow: 0 6px 20px rgb(0 0 0 / 0.18);
+:root[data-nav='compact'] .header {
+  padding: var(--nav-inset) var(--nav-inset) 0;
 }
 
 .bar {
@@ -35,11 +21,35 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--space-5);
-  height: var(--header-height);
+  height: var(--nav-h-top);
   max-width: calc(var(--container-max) + 2 * var(--gutter));
   margin-inline: auto;
   padding-inline: var(--gutter);
-  transition: height var(--nav-duration) var(--ease-out);
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  background-color: transparent;
+  transition:
+    height var(--nav-duration) var(--ease-out),
+    padding var(--nav-duration) var(--ease-out),
+    background-color var(--nav-duration) var(--ease-out),
+    border-color var(--nav-duration) var(--ease-out),
+    box-shadow var(--nav-duration) var(--ease-out);
+}
+
+:root[data-nav='compact'] .bar {
+  height: var(--nav-h-compact);
+  padding-inline: clamp(18px, 2.5vw, 32px);
+  border-color: rgb(255 255 255 / 0.18);
+  background-color: rgb(54 6 6 / 0.92); /* fallback without backdrop-filter */
+  box-shadow: 0 10px 30px rgb(0 0 0 / 0.22);
+}
+
+@supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  :root[data-nav='compact'] .bar {
+    background-color: var(--nav-glass);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    backdrop-filter: blur(18px) saturate(140%);
+  }
 }
 
 .logo {
@@ -153,7 +163,8 @@
   transform: translateY(-7px) rotate(-45deg);
 }
 
-/* Full-screen mobile menu. Sits under the bar (z-index -1 inside the header's stacking context). */
+/* Full-screen mobile menu in dark glass. Sits under the bar (z-index -1 inside the header's
+   stacking context), so the bar stays on top and readable. */
 .overlay {
   display: none;
 }
@@ -174,7 +185,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--color-bordeaux);
+    background-color: rgb(54 6 6 / 0.85);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    backdrop-filter: blur(18px) saturate(140%);
     opacity: 0;
     visibility: hidden;
     transition:

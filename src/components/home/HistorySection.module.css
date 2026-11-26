@@ -1,6 +1,7 @@
 .section {
   padding-block: var(--section-padding);
-  scroll-margin-top: var(--nav-h-compact);
+  /* Always reached scrolled, i.e. below the floating capsule. */
+  scroll-margin-top: calc(var(--nav-h-compact) + 2 * var(--nav-inset));
 }
 
 .grid {

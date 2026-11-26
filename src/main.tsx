@@ -23,6 +23,7 @@ const devRoutes = import.meta.env.DEV
   ? [
       {
         path: 'estilos',
+        handle: { noHero: true },
         HydrateFallback: () => null,
         lazy: async () => ({ Component: (await import('@/pages/dev/Estilos')).default }),
       },
@@ -40,7 +41,7 @@ const router = createBrowserRouter([
       { path: 'reservas', Component: Reservas },
       { path: 'contacto', Component: Contacto },
       ...devRoutes,
-      { path: '*', Component: NotFound },
+      { path: '*', Component: NotFound, handle: { noHero: true } },
     ],
   },
 ]);

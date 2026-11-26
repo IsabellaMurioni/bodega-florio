@@ -22,7 +22,10 @@
 }
 
 .main {
-  /* Room for the fixed nav in its top (tallest) state. */
-  padding-top: var(--nav-h-top);
   outline: none;
+}
+
+/* Heroes run full-bleed under the nav; pages without one need room for the capsule. */
+.noHero {
+  padding-top: calc(var(--header-height) + var(--space-7));
 }

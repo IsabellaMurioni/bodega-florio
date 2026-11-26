@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router';
 import logoWhite from '@/assets/brand/logo-white.png';
 import CartIcon from '@/components/ui/icons/CartIcon';
+import { useNoHero } from '@/hooks/useNoHero';
 import { TIENDA_URL } from '@/services/links';
 import styles from './Nav.module.css';
 
@@ -27,6 +28,7 @@ function Nav() {
   const [openOn, setOpenOn] = useState<string | null>(null);
   const open = openOn === pathname;
   const burgerRef = useRef<HTMLButtonElement>(null);
+  const noHero = useNoHero();
 
   const close = () => setOpenOn(null);
 
@@ -39,7 +41,8 @@ function Nav() {
     const update = () => {
       frame = 0;
       const y = window.scrollY;
-      const next = compact ? y > EXPAND_AT : y > COMPACT_AT;
+      // Without a hero there is nothing to float over: start (and stay) in the capsule.
+      const next = noHero || (compact ? y > EXPAND_AT : y > COMPACT_AT);
       if (next !== compact) {
         compact = next;
         if (compact) root.dataset.nav = 'compact';
@@ -57,7 +60,7 @@ function Nav() {
       cancelAnimationFrame(frame);
       delete root.dataset.nav;
     };
-  }, []);
+  }, [noHero]);
 
   useEffect(() => {
     if (!open) return;

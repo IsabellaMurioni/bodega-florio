@@ -79,11 +79,14 @@
   --container-max: 1220px;
   /* Sticky site header. Nav sets data-nav="compact" on <html> once the page is scrolled;
      --header-height always holds the current height (sticky offsets read it). */
-  --nav-h-top: 96px;
-  --nav-h-compact: 64px;
+  --nav-h-top: 96px; /* transparent bar over the hero */
+  --nav-h-compact: 60px; /* floating glass capsule */
+  --nav-inset: 12px; /* capsule gap to the viewport edges */
   --nav-logo-top: 52px;
-  --nav-logo-compact: 36px;
-  --nav-duration: 350ms;
+  --nav-logo-compact: 32px;
+  --nav-duration: 400ms;
+  /* White text must stay >= 4.5:1 even over white sections: 0.65 gives 5.9:1. */
+  --nav-glass: rgb(54 6 6 / 0.65);
   --header-height: var(--nav-h-top);
   --gutter: clamp(20px, 5vw, 48px);
   --section-padding: clamp(4rem, 2.5rem + 6vw, 8rem);
@@ -110,12 +113,14 @@
 @media (max-width: 760px) {
   :root {
     --nav-h-top: 76px;
-    --nav-h-compact: 58px;
+    --nav-h-compact: 56px;
+    --nav-inset: 8px;
     --nav-logo-top: 40px;
-    --nav-logo-compact: 30px;
+    --nav-logo-compact: 28px;
   }
 }
 
+/* Scrolled: sticky content sits just below the capsule (inset + capsule + inset). */
 :root[data-nav='compact'] {
-  --header-height: var(--nav-h-compact);
+  --header-height: calc(var(--nav-h-compact) + 2 * var(--nav-inset));
 }

@@ -12,7 +12,7 @@ import CtaBand from '@/components/ui/CtaBand';
 function Home() {
   return (
     <>
-      <title>Bodega Florio · Maipú, Mendoza, desde 1912</title>
+      <title>Bodega Florio</title>
       <HeroSection />
       <HistorySection />
       <CommitmentsTimeline />

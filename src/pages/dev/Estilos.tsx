@@ -43,7 +43,7 @@ const placeholders: { tone: PlaceholderTone; label: string }[] = [
 function Estilos() {
   return (
     <div className="container sg">
-      <title>Estilos · Bodega Florio</title>
+      <title>Estilos | Bodega Florio</title>
 
       <header className="sg-section">
         <span className="eyebrow">Design system · dev only</span>

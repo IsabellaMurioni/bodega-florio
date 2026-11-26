@@ -5,6 +5,8 @@
   z-index: 50;
   /* Follows the nav as it compacts, so there is never a gap or an overlap. */
   transition: top var(--nav-duration) var(--ease-out);
+  /* Fill the inset gap between the floating capsule and the tabs with white. */
+  box-shadow: 0 calc(-1 * var(--nav-inset)) 0 var(--color-bg);
   background-color: var(--color-bg);
   border-bottom: 1px solid rgb(54 6 6 / 0.1);
 }

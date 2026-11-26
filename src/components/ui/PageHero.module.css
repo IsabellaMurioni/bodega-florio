@@ -3,9 +3,20 @@
   position: relative;
   display: flex;
   align-items: flex-end;
-  min-height: clamp(380px, 56vh, 540px);
+  min-height: calc(clamp(380px, 56vh, 540px) + var(--nav-h-top));
   color: var(--color-bg);
   overflow: hidden;
+}
+
+/* Top scrim so the transparent nav stays readable on any photo. */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 1;
+  height: 160px;
+  background: linear-gradient(180deg, rgb(0 0 0 / 0.45), transparent);
+  pointer-events: none;
 }
 
 /* Darken the bottom so the title stays readable on any photo. */
@@ -36,7 +47,7 @@
 .inner {
   position: relative;
   z-index: 1;
-  padding-block: var(--space-9) var(--space-8);
+  padding-block: calc(var(--nav-h-top) + var(--space-7)) var(--space-8);
 }
 
 .eyebrow {
@@ -62,7 +73,7 @@
 
 @media (max-width: 760px) {
   .inner {
-    padding-block: var(--space-8) var(--space-9);
+    padding-block: calc(var(--nav-h-top) + var(--space-6)) var(--space-9);
   }
 
   .photoLabel {
