@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router';
+import logoNav from '@/assets/brand/logo-nav.png';
 import CartIcon from '@/components/ui/icons/CartIcon';
 import { TIENDA_URL } from '@/services/links';
 import styles from './Nav.module.css';
@@ -53,8 +54,8 @@ function Nav() {
   return (
     <header className={`${styles.header} ${open ? styles.isOpen : ''}`}>
       <nav className={styles.bar} aria-label="Principal">
-        <Link to="/" className={styles.wordmark} onClick={close}>
-          FLORIO
+        <Link to="/" className={styles.logo} onClick={close}>
+          <img src={logoNav} alt="Bodega Florio" width={281} height={96} />
         </Link>
 
         <ul className={styles.links}>

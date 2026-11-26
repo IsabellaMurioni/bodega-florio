@@ -1,4 +1,6 @@
 // Dev-only style guide. Registered in src/main.tsx only when import.meta.env.DEV is true.
+import logoFooter from '@/assets/brand/logo-footer.png';
+import logoNav from '@/assets/brand/logo-nav.png';
 import Button from '@/components/ui/Button';
 import ImagePlaceholder, { type PlaceholderTone } from '@/components/ui/ImagePlaceholder';
 import Reveal from '@/components/ui/Reveal';
@@ -47,6 +49,25 @@ function Estilos() {
         <span className="eyebrow">Design system · dev only</span>
         <h1>Guía de estilos</h1>
       </header>
+
+      <section className="sg-section">
+        <h2>Logo</h2>
+        <div className="sg-buttons sg-buttons--light">
+          <img src={logoNav} alt="Bodega Florio (nav)" style={{ height: 48, width: 'auto' }} />
+        </div>
+        <div className="sg-buttons sg-buttons--dark">
+          <img
+            src={logoFooter}
+            alt="Bodega Florio (footer)"
+            style={{ height: 48, width: 'auto' }}
+          />
+        </div>
+        <div className="sg-buttons sg-buttons--light">
+          <img src="/icon-512.png" alt="Favicon" style={{ height: 64, width: 64 }} />
+          <img src="/favicon-48.png" alt="Favicon 48px" width={48} height={48} />
+          <img src="/favicon-32.png" alt="Favicon 32px" width={32} height={32} />
+        </div>
+      </section>
 
       <section className="sg-section">
         <h2>Paleta</h2>

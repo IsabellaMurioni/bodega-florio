@@ -16,17 +16,14 @@
   padding: 20px var(--gutter);
 }
 
-.wordmark {
-  font-family: var(--font-display);
-  font-size: 1.4rem;
-  letter-spacing: 0.14em;
-  line-height: 1;
-  color: var(--color-ink);
-  text-decoration: none;
+.logo {
+  display: block;
+  flex-shrink: 0;
 }
 
-.wordmark:hover {
-  color: var(--color-ink);
+.logo img {
+  width: auto;
+  height: 36px;
 }
 
 .links {
@@ -119,6 +116,10 @@
 
   .burger {
     display: inline-flex;
+  }
+
+  .logo img {
+    height: 30px;
   }
 
   .overlay {
