@@ -4,4 +4,6 @@ export interface Review {
   text: string;
   date?: string;
   photo?: string;
+  /** Placeholder review, to be replaced with a real one. */
+  isSample?: boolean;
 }

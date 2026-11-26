@@ -1,5 +1,6 @@
 import { Link } from 'react-router';
 import { contactReasons, emails, locations } from '@/data/contact';
+import { INSTAGRAM_VINOTECA_URL } from '@/services/links';
 import styles from './Footer.module.css';
 
 const navLinks = [
@@ -60,7 +61,7 @@ function Footer() {
             <h2 className={styles.heading}>Seguinos</h2>
             <ul className={styles.list}>
               <li>
-                <a href="https://www.instagram.com/vinotecaflorio/" target="_blank" rel="noopener">
+                <a href={INSTAGRAM_VINOTECA_URL} target="_blank" rel="noopener">
                   Instagram {instagram}
                 </a>
               </li>

@@ -1,0 +1,129 @@
+.section {
+  padding-block: var(--section-padding);
+  background-color: var(--color-surface);
+  overflow: hidden;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--space-6);
+  align-items: center;
+}
+
+.text {
+  grid-column: 1 / span 5;
+}
+
+.eyebrow {
+  margin-bottom: var(--space-4);
+  color: var(--color-gold);
+}
+
+.details {
+  display: grid;
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+
+.details dt {
+  font-size: var(--text-eyebrow);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.details dd {
+  margin: var(--space-1) 0 0;
+}
+
+.link {
+  display: inline-block;
+  margin-top: var(--space-6);
+  font-size: var(--text-small);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-bordeaux);
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 2px;
+}
+
+.link:hover {
+  color: var(--color-gold);
+}
+
+/* Overlapping polaroids; positions are % of the collage box so it scales down cleanly. */
+.collage {
+  position: relative;
+  grid-column: 7 / span 6;
+  aspect-ratio: 1 / 0.9;
+}
+
+.polaroid {
+  position: absolute;
+  width: 52%;
+  margin: 0;
+  padding: 10px 10px 0;
+  background-color: #fffdf9;
+  box-shadow: 0 10px 24px rgb(25 18 13 / 0.16);
+  transition:
+    transform var(--duration-slow) var(--ease-out),
+    box-shadow var(--duration-slow) var(--ease-out);
+}
+
+.polaroid figcaption {
+  padding: var(--space-3) var(--space-1) var(--space-4);
+  font-size: var(--text-small);
+  font-style: italic;
+  text-align: center;
+  color: var(--color-muted);
+}
+
+.polaroid:hover {
+  z-index: 3;
+  transform: rotate(0deg) scale(1.06);
+  box-shadow: 0 24px 48px rgb(25 18 13 / 0.28);
+}
+
+.p1 {
+  top: 4%;
+  left: 0;
+  transform: rotate(-5deg);
+}
+
+.p2 {
+  top: 0;
+  right: 2%;
+  z-index: 1;
+  transform: rotate(4deg);
+}
+
+.p3 {
+  bottom: 0;
+  left: 26%;
+  z-index: 2;
+  transform: rotate(-2deg);
+}
+
+@media (max-width: 760px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  .text,
+  .collage {
+    grid-column: auto;
+  }
+
+  .collage {
+    aspect-ratio: 1 / 1.05;
+  }
+
+  .polaroid {
+    width: 58%;
+    padding: 8px 8px 0;
+  }
+}

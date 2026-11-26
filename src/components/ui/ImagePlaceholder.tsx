@@ -8,6 +8,8 @@ interface ImagePlaceholderProps {
   /** CSS aspect-ratio, e.g. "4 / 5" (default "4 / 3"). */
   ratio?: string;
   tone?: PlaceholderTone;
+  /** Word shown in the visible label, e.g. [Foto: ...] or [Mapa: ...] (default "Foto"). */
+  kind?: string;
   /** When set, the real image is rendered instead of the placeholder. */
   src?: string;
   alt?: string;
@@ -19,6 +21,7 @@ function ImagePlaceholder({
   label,
   ratio = '4 / 3',
   tone = 'stone',
+  kind = 'Foto',
   src,
   alt,
   className,
@@ -44,7 +47,7 @@ function ImagePlaceholder({
       style={{ aspectRatio: ratio }}
     >
       <span className={styles.label} aria-hidden="true">
-        [Foto: {label}]
+        [{kind}: {label}]
       </span>
     </div>
   );
