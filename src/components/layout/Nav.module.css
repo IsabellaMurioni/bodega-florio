@@ -82,24 +82,17 @@
   padding-block: 6px;
   color: var(--color-bg);
   font-family: var(--font-heading);
-  font-size: 0.85rem;
-  letter-spacing: 0.16em;
+  font-size: var(--nav-link-top);
+  letter-spacing: 0.03em;
   line-height: 1;
-  text-transform: uppercase;
   text-decoration: none;
+  transition:
+    opacity var(--duration-base) var(--ease-out),
+    font-size var(--nav-duration) var(--ease-out);
 }
 
-/* Gold underline that grows from the center; stays on the active page. */
-.link::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0.16em; /* compensate the trailing letter-spacing */
-  bottom: 0;
-  height: 1px;
-  background-color: var(--color-gold);
-  transform: scaleX(0);
-  transition: transform var(--duration-base) var(--ease-out);
+:root[data-nav='compact'] .links .link {
+  font-size: var(--nav-link-compact);
 }
 
 .link:hover,
@@ -107,9 +100,37 @@
   color: var(--color-bg);
 }
 
-.link:hover::after,
+/* Focus hover: while one link is hovered or keyboard-focused, the others fade back. */
+.links:has(.link:focus-visible) .link:not(:focus-visible),
+.overlayLinks:has(.link:focus-visible) .link:not(:focus-visible) {
+  opacity: 0.45;
+}
+
+@media (hover: hover) {
+  .links:has(.link:hover) .link:not(:hover),
+  .overlayLinks:has(.link:hover) .link:not(:hover) {
+    opacity: 0.45;
+  }
+}
+
+/* Touch: brief press state instead. */
+@media (hover: none) {
+  .link:active {
+    opacity: 0.6;
+  }
+}
+
+/* Active page: small gold dot centered under the link. */
 .link.active::after {
-  transform: scaleX(1);
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: var(--color-gold);
+  transform: translateX(-50%);
 }
 
 .actions {
@@ -122,11 +143,28 @@
   display: inline-flex;
   padding: var(--space-1);
   color: var(--color-bg);
-  transition: color var(--duration-fast) var(--ease-out);
+  transition:
+    color var(--duration-fast) var(--ease-out),
+    opacity var(--duration-base) var(--ease-out);
 }
 
-.cart:hover {
-  color: var(--color-gold);
+.cart svg {
+  width: var(--nav-icon-top);
+  height: var(--nav-icon-top);
+  transition:
+    width var(--nav-duration) var(--ease-out),
+    height var(--nav-duration) var(--ease-out);
+}
+
+:root[data-nav='compact'] .cart svg {
+  width: var(--nav-icon-compact);
+  height: var(--nav-icon-compact);
+}
+
+@media (hover: hover) {
+  .cart:hover {
+    opacity: 0.7;
+  }
 }
 
 /* Burger: 3 lines of 22x2px, 5px apart; turns into an X when open. */
@@ -241,7 +279,12 @@
 
   .overlayLinks .link {
     padding-block: 8px;
-    font-size: clamp(1.6rem, 7vw, 2.25rem);
-    letter-spacing: 0.12em;
+    font-size: clamp(1.9rem, 8vw, 2.5rem);
+  }
+
+  .overlayLinks .link.active::after {
+    bottom: -8px;
+    width: 5px;
+    height: 5px;
   }
 }
