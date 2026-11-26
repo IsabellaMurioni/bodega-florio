@@ -113,34 +113,39 @@
   opacity: 0.55;
 }
 
+/* In the capsule (which can sit over white sections) they rest higher for contrast. */
+:root[data-nav='compact'] .links .link:not(.active) {
+  opacity: 0.7;
+}
+
 /* While a link is hovered or keyboard-focused it takes full opacity and every other link
    (the active one included) dims. */
-.links:has(.link:focus-visible) .link,
-.overlayLinks:has(.link:focus-visible) .link {
+:root .links:has(.link:focus-visible) .link,
+:root .overlayLinks:has(.link:focus-visible) .link {
   opacity: 0.45;
 }
 
-.links:has(.link:focus-visible) .link:focus-visible,
-.overlayLinks:has(.link:focus-visible) .link:focus-visible {
+:root .links:has(.link:focus-visible) .link:focus-visible,
+:root .overlayLinks:has(.link:focus-visible) .link:focus-visible {
   opacity: 1;
 }
 
 @media (hover: hover) {
-  .links:has(.link:hover) .link,
-  .overlayLinks:has(.link:hover) .link {
+  :root .links:has(.link:hover) .link,
+  :root .overlayLinks:has(.link:hover) .link {
     opacity: 0.45;
   }
 
-  .links:has(.link:hover) .link:hover,
-  .overlayLinks:has(.link:hover) .link:hover {
+  :root .links:has(.link:hover) .link:hover,
+  :root .overlayLinks:has(.link:hover) .link:hover {
     opacity: 1;
   }
 }
 
-/* Touch: brief press state instead. */
+/* Touch: brief press state instead (selector weight beats the resting opacities). */
 @media (hover: none) {
-  .link:active {
-    opacity: 0.6;
+  :root .header .link.link:active {
+    opacity: 0.4;
   }
 }
 

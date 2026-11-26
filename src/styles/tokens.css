@@ -80,16 +80,16 @@
   /* Sticky site header. Nav sets data-nav="compact" on <html> once the page is scrolled;
      --header-height always holds the current height (sticky offsets read it). */
   --nav-h-top: 120px; /* transparent bar over the hero */
-  --nav-h-compact: 96px; /* floating glass capsule */
+  --nav-h-compact: 72px; /* floating glass capsule */
   --nav-inset: 12px; /* capsule gap to the viewport edges */
   --nav-logo-top: 66px;
-  --nav-logo-compact: 52px;
+  --nav-logo-compact: 40px;
   --nav-link-top: 1.1rem;
   --nav-link-compact: 1rem;
   --nav-gap-top: 2.75rem; /* between links */
   --nav-gap-compact: 2.25rem;
   --nav-icon-top: 30px;
-  --nav-icon-compact: 26px;
+  --nav-icon-compact: 24px;
   --nav-pad-top: clamp(24px, 5vw, 80px); /* bar side padding */
   --nav-pad-compact: 40px; /* side padding inside the capsule */
   --nav-capsule-max: 1080px;
@@ -122,10 +122,10 @@
 @media (max-width: 760px) {
   :root {
     --nav-h-top: 92px;
-    --nav-h-compact: 76px;
+    --nav-h-compact: 60px;
     --nav-inset: 8px;
     --nav-logo-top: 48px;
-    --nav-logo-compact: 40px;
+    --nav-logo-compact: 32px;
     --nav-pad-compact: 20px;
   }
 }
