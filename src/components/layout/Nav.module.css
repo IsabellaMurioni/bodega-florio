@@ -17,28 +17,34 @@
 }
 
 .bar {
+  --link-gap: var(--nav-gap-top);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-5);
+  /* A bit more room before the cart than between links. */
+  gap: calc(var(--link-gap) + 0.75rem);
   height: var(--nav-h-top);
   max-width: calc(var(--container-max) + 2 * var(--gutter));
   margin-inline: auto;
-  padding-inline: var(--gutter);
+  padding-inline: var(--nav-pad-top);
   border: 1px solid transparent;
   border-radius: var(--radius-pill);
   background-color: transparent;
   transition:
     height var(--nav-duration) var(--ease-out),
+    max-width var(--nav-duration) var(--ease-out),
     padding var(--nav-duration) var(--ease-out),
+    gap var(--nav-duration) var(--ease-out),
     background-color var(--nav-duration) var(--ease-out),
     border-color var(--nav-duration) var(--ease-out),
     box-shadow var(--nav-duration) var(--ease-out);
 }
 
 :root[data-nav='compact'] .bar {
+  --link-gap: var(--nav-gap-compact);
   height: var(--nav-h-compact);
-  padding-inline: clamp(18px, 2.5vw, 32px);
+  max-width: var(--nav-capsule-max);
+  padding-inline: var(--nav-pad-compact);
   border-color: rgb(255 255 255 / 0.18);
   background-color: rgb(54 6 6 / 0.92); /* fallback without backdrop-filter */
   box-shadow: 0 10px 30px rgb(0 0 0 / 0.22);
@@ -70,7 +76,8 @@
 .links {
   display: flex;
   align-items: center;
-  gap: clamp(18px, 3vw, 40px);
+  gap: var(--link-gap);
+  transition: gap var(--nav-duration) var(--ease-out);
   margin-left: auto;
   padding: 0;
   list-style: none;
@@ -100,16 +107,33 @@
   color: var(--color-bg);
 }
 
-/* Focus hover: while one link is hovered or keyboard-focused, the others fade back. */
-.links:has(.link:focus-visible) .link:not(:focus-visible),
-.overlayLinks:has(.link:focus-visible) .link:not(:focus-visible) {
+/* At rest the current page is at full opacity and the rest are dimmed. */
+.links .link:not(.active),
+.overlayLinks .link:not(.active) {
+  opacity: 0.55;
+}
+
+/* While a link is hovered or keyboard-focused it takes full opacity and every other link
+   (the active one included) dims. */
+.links:has(.link:focus-visible) .link,
+.overlayLinks:has(.link:focus-visible) .link {
   opacity: 0.45;
 }
 
+.links:has(.link:focus-visible) .link:focus-visible,
+.overlayLinks:has(.link:focus-visible) .link:focus-visible {
+  opacity: 1;
+}
+
 @media (hover: hover) {
-  .links:has(.link:hover) .link:not(:hover),
-  .overlayLinks:has(.link:hover) .link:not(:hover) {
+  .links:has(.link:hover) .link,
+  .overlayLinks:has(.link:hover) .link {
     opacity: 0.45;
+  }
+
+  .links:has(.link:hover) .link:hover,
+  .overlayLinks:has(.link:hover) .link:hover {
+    opacity: 1;
   }
 }
 
@@ -118,19 +142,6 @@
   .link:active {
     opacity: 0.6;
   }
-}
-
-/* Active page: small gold dot centered under the link. */
-.link.active::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  bottom: -6px;
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background-color: var(--color-gold);
-  transform: translateX(-50%);
 }
 
 .actions {
@@ -164,6 +175,17 @@
 @media (hover: hover) {
   .cart:hover {
     opacity: 0.7;
+  }
+}
+
+/* Narrow desktop: tighter gaps so the links stay on one line. */
+@media (min-width: 761px) and (max-width: 860px) {
+  .bar {
+    --link-gap: 1.5rem;
+  }
+
+  :root[data-nav='compact'] .bar {
+    --link-gap: 1.25rem;
   }
 }
 
@@ -280,11 +302,5 @@
   .overlayLinks .link {
     padding-block: 8px;
     font-size: clamp(1.9rem, 8vw, 2.5rem);
-  }
-
-  .overlayLinks .link.active::after {
-    bottom: -8px;
-    width: 5px;
-    height: 5px;
   }
 }
