@@ -4,7 +4,7 @@ import logoBordeaux from '@/assets/brand/logo-bordeaux.png';
 import logoWhite from '@/assets/brand/logo-white.png';
 import CartIcon from '@/components/ui/icons/CartIcon';
 import { useIntro } from '@/hooks/useIntro';
-import { useNoHero } from '@/hooks/useNoHero';
+import { useNoHero, usePageTheme } from '@/hooks/useNoHero';
 import { TIENDA_URL } from '@/services/links';
 import SiteMenu, { MENU_ID } from './SiteMenu';
 import styles from './Nav.module.css';
@@ -58,6 +58,7 @@ function Caret() {
 function Nav() {
   const { pathname } = useLocation();
   const noHero = useNoHero();
+  const dark = usePageTheme() === 'bordeaux';
   const introDone = useIntro();
   // Menu and dropdown are tied to the path they were opened on, so any route change closes them.
   const [menuOn, setMenuOn] = useState<string | null>(null);
@@ -118,7 +119,11 @@ function Nav() {
   };
 
   return (
-    <header className={[styles.header, introDone && styles.ready].filter(Boolean).join(' ')}>
+    <header
+      className={[styles.header, introDone && styles.ready, dark && styles.dark]
+        .filter(Boolean)
+        .join(' ')}
+    >
       <nav className={styles.bar} aria-label="Principal">
         <div className={styles.left}>
           <a

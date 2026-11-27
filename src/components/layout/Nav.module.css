@@ -24,6 +24,29 @@
   border-bottom-color: var(--color-rule);
 }
 
+/* Bordeaux pages (/vinos): the bar blends into the red page, white text and logo in both states.
+   Transparent at the top; once scrolled it takes the page red as a solid fill (seamless, but
+   content no longer shows through), with no visible rule. */
+.header.dark,
+:root[data-nav='compact'] .header.dark {
+  --nav-fg: var(--color-white);
+  --color-focus: var(--color-gold);
+  background-color: transparent;
+  border-bottom-color: transparent;
+}
+
+:root[data-nav='compact'] .header.dark {
+  background-color: var(--color-bordeaux);
+}
+
+:root[data-nav='compact'] .dark .logoWhite {
+  opacity: 1;
+}
+
+:root[data-nav='compact'] .dark .logoBordeaux {
+  opacity: 0;
+}
+
 .bar {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);

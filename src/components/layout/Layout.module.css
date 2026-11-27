@@ -33,6 +33,9 @@
 /* Bordeaux pages (e.g. /vinos): whole page on red, white text, gold focus rings. Their top block
    is sized to fit one screen, so they only reserve the nav's height. */
 .main[data-theme='bordeaux'] {
+  /* flow-root: the last child's bottom margin stays inside main instead of collapsing through
+     it and leaving a white strip above the footer. */
+  display: flow-root;
   --color-focus: var(--color-gold);
   --btn-outline-invert: var(--color-bordeaux);
   background-color: var(--color-bordeaux);
