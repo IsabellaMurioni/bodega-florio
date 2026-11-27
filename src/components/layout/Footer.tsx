@@ -83,84 +83,87 @@ function MailIcon() {
   );
 }
 
-/** R3 footer: contact on the left; logo and three link columns on the right; legal line below. */
+/** R3b footer: centered block with the logo, four columns (the last one is contact) and the legal line. */
 function Footer() {
   return (
     <footer className={styles.footer}>
-      <div className={styles.main}>
-        <Reveal className={styles.contact}>
-          <ul className={styles.contactList}>
-            {phone && (
-              <li>
-                <a href={`tel:${phone}`} className={styles.contactItem}>
-                  <span className={styles.icon} aria-hidden="true">
-                    <PhoneIcon />
-                  </span>
-                  {phone}
-                </a>
-              </li>
-            )}
-            {bodega && (
-              <li>
-                <a
-                  href={bodega.mapsUrl}
-                  target="_blank"
-                  rel="noopener"
-                  className={styles.contactItem}
-                >
-                  <span className={styles.icon} aria-hidden="true">
-                    <PinIcon />
-                  </span>
-                  {address}
-                </a>
-              </li>
-            )}
-            <li>
-              <a href={`mailto:${emails.minorista}`} className={styles.contactItem}>
-                <span className={styles.icon} aria-hidden="true">
-                  <MailIcon />
-                </span>
-                {emails.minorista}
-              </a>
-            </li>
-          </ul>
+      <div className={styles.inner}>
+        <Reveal className={styles.logoWrap}>
+          <Link to="/" className={styles.logo} aria-label="Bodega Florio, inicio">
+            <img src={logoWhite} alt="" width={410} height={140} />
+          </Link>
         </Reveal>
 
-        <div className={styles.right}>
-          <Reveal>
-            <Link to="/" className={styles.logo} aria-label="Bodega Florio, inicio">
-              <img src={logoWhite} alt="" width={410} height={140} />
-            </Link>
+        <div className={styles.columns}>
+          {columns.map(({ title, links }, i) => (
+            <Reveal key={title} delay={120 + i * 100} className={styles.column}>
+              <h2 className={styles.heading}>{title}</h2>
+              <ul className={styles.list}>
+                {links.map(({ label, to, href }) => (
+                  <li key={label}>
+                    {to ? (
+                      <Link to={to}>{label}</Link>
+                    ) : (
+                      <a href={href} target="_blank" rel="noopener">
+                        {label}
+                      </a>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+          ))}
+
+          <Reveal delay={120 + columns.length * 100} className={styles.column}>
+            <h2 className={styles.heading}>Contacto</h2>
+            <ul className={styles.list}>
+              {phone && (
+                <li>
+                  <a href={`tel:${phone}`} className={styles.contactItem}>
+                    <span className={styles.icon} aria-hidden="true">
+                      <PhoneIcon />
+                    </span>
+                    {phone}
+                  </a>
+                </li>
+              )}
+              {bodega && (
+                <li>
+                  <a
+                    href={bodega.mapsUrl}
+                    target="_blank"
+                    rel="noopener"
+                    className={styles.contactItem}
+                  >
+                    <span className={styles.icon} aria-hidden="true">
+                      <PinIcon />
+                    </span>
+                    {address}
+                  </a>
+                </li>
+              )}
+              <li>
+                <a href={`mailto:${emails.minorista}`} className={styles.contactItem}>
+                  <span className={styles.icon} aria-hidden="true">
+                    <MailIcon />
+                  </span>
+                  {/* Allow a line break before the @ in narrow columns. */}
+                  <span>
+                    {emails.minorista.split('@')[0]}
+                    <wbr />@{emails.minorista.split('@')[1]}
+                  </span>
+                </a>
+              </li>
+            </ul>
           </Reveal>
-
-          <div className={styles.columns}>
-            {columns.map(({ title, links }, i) => (
-              <Reveal key={title} delay={120 + i * 100} className={styles.column}>
-                <h2 className={styles.heading}>{title}</h2>
-                <ul className={styles.list}>
-                  {links.map(({ label, to, href }) => (
-                    <li key={label}>
-                      {to ? (
-                        <Link to={to}>{label}</Link>
-                      ) : (
-                        <a href={href} target="_blank" rel="noopener">
-                          {label}
-                        </a>
-                      )}
-                    </li>
-                  ))}
-                </ul>
-              </Reveal>
-            ))}
-          </div>
         </div>
-      </div>
 
-      <p className={styles.legal}>
-        <span>© {year} Bodega Florio</span>
-        {address && <span>{address}</span>}
-        <span>Beber con moderación. Prohibida su venta a menores de 18 años.</span>
-      </p>
+        <p className={styles.legal}>
+          <span>© {year} Bodega Florio</span>
+          {address && <span>{address}</span>}
+          <span>Beber con moderación. Prohibida su venta a menores de 18 años.</span>
+        </p>
+      </div>
     </footer>
   );
 }

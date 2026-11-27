@@ -1,4 +1,4 @@
-/* R3 footer. */
+/* R3b footer: one centered block (logo, four columns, legal line). */
 .footer {
   --color-focus: var(--color-gold);
   padding: var(--space-md) var(--space-sm) 32px;
@@ -17,43 +17,15 @@
   opacity: 0.65;
 }
 
-.main {
+.inner {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr);
-  gap: var(--space-sm);
-  padding-bottom: var(--space-md);
+  gap: 56px;
+  max-width: 1200px;
+  margin-inline: auto;
 }
 
-/* Left: contact. */
-.contactList {
-  display: grid;
-  gap: 16px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  font-size: var(--body-size);
-}
-
-.contactItem {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.icon {
-  display: inline-grid;
-  flex-shrink: 0;
-  place-items: center;
-  width: 24px;
-  height: 24px;
-  border: 0.8px solid currentColor;
-  border-radius: 50%;
-}
-
-/* Right: logo and columns. */
-.right {
-  display: grid;
-  gap: 40px;
+.logoWrap {
+  justify-self: center;
 }
 
 .logo {
@@ -67,8 +39,8 @@
 
 .columns {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 32px clamp(24px, 3vw, 56px);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 40px clamp(24px, 3vw, 48px);
 }
 
 .heading {
@@ -92,45 +64,69 @@
   font-size: 15px;
 }
 
-/* Bottom legal line. */
+.contactItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.icon {
+  display: inline-grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border: 0.8px solid currentColor;
+  border-radius: 50%;
+}
+
+/* Legal line, centered. */
 .legal {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 6px 28px;
   padding-top: 24px;
   border-top: 1px solid rgb(255 255 255 / 0.2);
   color: rgb(255 255 255 / 0.6);
   font-size: 12px;
   line-height: 1.5;
+  text-align: center;
 }
 
-@media (max-width: 1000px) {
-  .main {
-    grid-template-columns: 1fr;
-    gap: var(--space-md);
+/* 2x2 between 600 and 1000px. */
+@media (max-width: 999px) {
+  .columns {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-@media (max-width: 760px) {
+/* Single centered column on phones. */
+@media (max-width: 599px) {
   .footer {
     padding: 64px 20px 28px;
   }
 
-  .main {
-    gap: 48px;
-    padding-bottom: 48px;
-  }
-
-  .columns {
-    grid-template-columns: 1fr;
-    gap: 36px;
+  .inner {
+    gap: 44px;
   }
 
   .logo img {
     height: 52px;
   }
 
+  .columns {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    text-align: center;
+  }
+
+  .contactItem {
+    justify-content: center;
+  }
+
   .legal {
     flex-direction: column;
+    align-items: center;
   }
 }
