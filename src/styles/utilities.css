@@ -26,3 +26,15 @@
   white-space: nowrap !important;
   border: 0 !important;
 }
+
+/* R0: 24-column vw grid. Place children with grid-column, e.g. style="grid-column: 3 / span 8". */
+.grid-24 {
+  display: grid;
+  grid-template-columns: repeat(24, minmax(0, 1fr));
+  width: 100%;
+}
+
+/* Side padding of one grid column (the standard page margin of the redesign). */
+.pad-x-sm {
+  padding-inline: var(--space-sm);
+}

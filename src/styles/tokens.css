@@ -1,23 +1,60 @@
 /*
  * Design tokens - Bodega Florio.
  *
+ * R0 (redesign): the first block below is the new design base. The "Legacy" block keeps the
+ * variables the pre-redesign components still use; each page drops them as it is rebuilt.
+ *
  * Breakpoint: a single mobile breakpoint at 760px.
  * Custom properties cannot be used inside media queries, so use the literal value:
  *   @media (max-width: 760px) { ... }   -> mobile
  *   @media (min-width: 761px) { ... }   -> tablet / desktop
- * Type and spacing are fluid (clamp), so most components need no breakpoint at all.
  */
 
 :root {
-  /* Colors */
-  --color-bg: #ffffff; /* pure white: every light background */
-  --color-surface: #ffffff; /* sections are separated by --color-rule, not by a tint */
-  --color-rule: rgb(54 6 6 / 0.1); /* thin 1px section dividers on white */
-  --color-ink: #360606; /* body text on light */
-  --color-inkblack: #360606; /* dark bands (hero, metrics, footer) */
-  --color-black: #000000;
+  /* ---- R0: colors ---- */
   --color-bordeaux: #6f0025;
-  --color-gold: #ddb972; /* text only on dark backgrounds; lines/borders on light */
+  --color-bordeaux-dark: #360606;
+  --color-gold: #ddb972; /* only on dark backgrounds */
+  --color-white: #ffffff;
+  --color-bg: var(--color-white);
+  --color-ink: #000000;
+  --color-rule: rgb(0 0 0 / 0.15);
+  --color-band: #f4e7ea; /* soft band, placeholder until isa confirms */
+
+  /* ---- R0: type ---- */
+  --font-display: 'Krylon', 'Arial Narrow', Arial, sans-serif; /* always uppercase, line-height 1 */
+  --font-body: 'Neutral Sans', system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+  --display-xl: clamp(64px, 13vw, 192px);
+  --display-l: clamp(56px, 9vw, 128px);
+  --display-m: clamp(40px, 6.5vw, 96px);
+  --display-s: 40px;
+  --display-card: 24px;
+  --display-leading: 1;
+  --body-size: 16px;
+  --body-lead: 20px;
+  --body-leading: 1.4;
+  --ui-weight: 600; /* nav and buttons */
+  --label-size: clamp(10px, 0.75vw, 12px);
+  --label-tracking: 0.2em;
+
+  /* ---- R0: spacing on a 24-column vw grid (1 column = 100vw / 24) ---- */
+  --col: 4.1667vw;
+  --space-sm: 4.1667vw; /* 1 column */
+  --space-md: 8.3333vw; /* 2 columns */
+  --space-lg: 12.5vw; /* 3 columns */
+
+  /* ---- R0: motion ---- */
+  --ease-curtain: cubic-bezier(0.68, 0.09, 0, 0.97);
+  --ease-ui: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --dur-ui: 0.6s;
+  --dur-base: 1s;
+  --dur-long: 1.6s;
+  --radius-btn: 2.5px;
+
+  /* ---- Legacy (pre-redesign components) ---- */
+  --color-surface: #ffffff; /* sections are separated by --color-rule, not by a tint */
+  --color-inkblack: var(--color-bordeaux-dark); /* dark bands (hero, metrics, footer) */
+  --color-black: #000000;
   --color-muted: #765848; /* secondary text on white: 6.4:1 */
   --color-on-dark-soft: #f3eded; /* soft white for body text on dark: 14:1 on inkblack */
   --color-on-dark-muted: #bfa894; /* secondary text on dark: 7.8:1 on inkblack */
@@ -28,9 +65,7 @@
   --color-glass-border: rgb(221 185 114 / 0.6);
 
   /* Font families */
-  --font-display: 'Krylon', 'Arial Narrow', Arial, sans-serif;
   --font-heading: 'Krylon', 'Arial Narrow', Arial, sans-serif;
-  --font-body: 'Neutral Sans', system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
 
   /* Font weights (Neutral Sans variable range 400-900; Krylon is 400 only) */
   --weight-regular: 400;

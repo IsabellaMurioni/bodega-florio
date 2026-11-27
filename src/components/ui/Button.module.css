@@ -1,0 +1,90 @@
+.button {
+  /* Base colors and their inverse (used by the wipe). */
+  --btn-bg: var(--color-bordeaux);
+  --btn-fg: var(--color-white);
+  --btn-border: var(--color-bordeaux);
+  --btn-inv-bg: var(--color-white);
+  --btn-inv-fg: var(--color-bordeaux);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 28px;
+  overflow: hidden;
+  border: 1px solid var(--btn-border);
+  border-radius: var(--radius-btn);
+  background-color: var(--btn-bg);
+  color: var(--btn-fg);
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: var(--ui-weight);
+  line-height: 1;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.button:hover {
+  color: var(--btn-fg);
+}
+
+.white {
+  --btn-bg: var(--color-white);
+  --btn-fg: var(--color-bordeaux);
+  --btn-border: var(--color-white);
+  --btn-inv-bg: var(--color-bordeaux);
+  --btn-inv-fg: var(--color-white);
+}
+
+/* Thin outline in the surrounding text color; the wipe fills it with that color. */
+.outline {
+  --btn-bg: transparent;
+  --btn-fg: currentColor;
+  --btn-border: currentColor;
+  --btn-inv-bg: currentColor;
+  --btn-inv-fg: var(--btn-outline-invert, var(--color-white));
+  border-width: 0.8px;
+}
+
+.label {
+  position: relative;
+  /* compensate the trailing letter-spacing so the label is optically centered */
+  margin-right: -2.5px;
+}
+
+.wipe {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--btn-inv-bg);
+  color: var(--btn-inv-fg);
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path var(--dur-ui) var(--ease-ui);
+}
+
+/* Outline: the wipe keeps the parent's text color and paints its background with it; only the
+   label inside switches to the inverse color. */
+.outline .wipe {
+  background-color: currentColor;
+  color: inherit;
+}
+
+.outline .wipe .label {
+  color: var(--btn-inv-fg);
+}
+
+.button:hover .wipe,
+.button:focus-visible .wipe {
+  clip-path: inset(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wipe {
+    transition: none;
+  }
+}

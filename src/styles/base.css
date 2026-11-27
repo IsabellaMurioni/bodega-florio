@@ -26,9 +26,9 @@ body {
   background-color: var(--color-bg);
   color: var(--color-ink);
   font-family: var(--font-body);
-  font-size: var(--text-body);
+  font-size: var(--body-size);
   font-weight: var(--weight-regular);
-  line-height: var(--leading-normal);
+  line-height: var(--body-leading);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;

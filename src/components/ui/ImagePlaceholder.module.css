@@ -19,6 +19,14 @@
   font-size: var(--text-small);
 }
 
+.neutral {
+  background: linear-gradient(160deg, #e6e3e3, #c9c4c4);
+}
+
+.neutral .label {
+  color: rgb(0 0 0 / 0.6);
+}
+
 .vineyard {
   background: linear-gradient(160deg, #6b7a4a, #2c3319);
 }

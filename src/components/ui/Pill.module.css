@@ -1,0 +1,44 @@
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 40px;
+  padding: 4px 18px;
+  border: 0.8px solid var(--color-rule);
+  border-radius: 999px;
+  background-color: transparent;
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: var(--ui-weight);
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    background-color var(--dur-ui) var(--ease-ui),
+    color var(--dur-ui) var(--ease-ui),
+    border-color var(--dur-ui) var(--ease-ui);
+}
+
+.pill:has(.icon) {
+  padding-left: 4px;
+}
+
+.icon {
+  display: inline-grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--color-white);
+  color: var(--color-bordeaux);
+}
+
+.pill:hover {
+  border-color: var(--color-bordeaux);
+}
+
+.active {
+  border-color: var(--color-bordeaux);
+  background-color: var(--color-bordeaux);
+  color: var(--color-white);
+}

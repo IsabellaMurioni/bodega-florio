@@ -1,0 +1,50 @@
+.iconButton {
+  display: inline-grid;
+  place-items: center;
+  width: 60px;
+  height: 60px;
+  padding: 0;
+  border: 0.8px solid transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  transition:
+    transform var(--dur-ui) var(--ease-ui),
+    background-color var(--dur-ui) var(--ease-ui),
+    color var(--dur-ui) var(--ease-ui);
+}
+
+.icon {
+  display: inline-flex;
+}
+
+.light {
+  background-color: var(--color-white);
+  color: var(--color-bordeaux);
+}
+
+.dark {
+  background-color: var(--color-bordeaux-dark);
+  color: var(--color-white);
+}
+
+.outline {
+  border-color: currentColor;
+  background-color: transparent;
+  color: inherit;
+}
+
+.iconButton:hover {
+  transform: scale(1.06);
+}
+
+.iconButton:disabled {
+  opacity: 0.4;
+  cursor: default;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .iconButton:hover {
+    transform: none;
+  }
+}

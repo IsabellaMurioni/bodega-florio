@@ -1,0 +1,9 @@
+.eyebrow {
+  display: block;
+  font-family: var(--font-body);
+  font-size: var(--label-size);
+  font-weight: var(--ui-weight);
+  line-height: 1.4;
+  letter-spacing: var(--label-tracking);
+  text-transform: uppercase;
+}

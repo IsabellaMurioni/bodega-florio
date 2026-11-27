@@ -1,7 +1,7 @@
 import styles from './ImagePlaceholder.module.css';
 
 export type PlaceholderTone =
-  'vineyard' | 'bordeaux' | 'gold' | 'stone' | 'sparkling' | 'red' | 'blush' | 'ochre';
+  'neutral' | 'vineyard' | 'bordeaux' | 'gold' | 'stone' | 'sparkling' | 'red' | 'blush' | 'ochre';
 
 interface ImagePlaceholderProps {
   /** What the photo will show; used as the accessible name and the visible label. */
@@ -17,11 +17,14 @@ interface ImagePlaceholderProps {
   className?: string;
 }
 
-/** Gradient stand-in for photos that are not delivered yet; swaps to a real <img> via `src`. */
+/**
+ * Stand-in for photos that are not delivered yet (R0: neutral grey by default; the old colored
+ * tones remain for pre-redesign pages). Swaps to a real <img> via `src`.
+ */
 function ImagePlaceholder({
   label,
   ratio = '4 / 3',
-  tone = 'stone',
+  tone = 'neutral',
   kind = 'Foto',
   src,
   alt,

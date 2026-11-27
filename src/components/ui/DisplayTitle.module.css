@@ -1,0 +1,32 @@
+.title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: var(--display-leading);
+  letter-spacing: 0;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+.xl {
+  font-size: var(--display-xl);
+}
+
+.l {
+  font-size: var(--display-l);
+}
+
+.m {
+  font-size: var(--display-m);
+}
+
+.s {
+  font-size: var(--display-s);
+}
+
+.card {
+  font-size: var(--display-card);
+}
+
+.center {
+  text-align: center;
+}
