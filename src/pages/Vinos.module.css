@@ -1,7 +1,15 @@
-/* Top of the page on white: ghost title behind the controls and the slider. */
+/* Top block: controls, plus the slider and the ghost title in slider view. */
 .top {
   position: relative;
-  padding-bottom: var(--space-sm);
+  display: flex;
+  flex-direction: column;
+  padding-block: 16px 20px;
+}
+
+/* Slider view: the whole block fits one screen below the nav. */
+.fit {
+  height: calc(100svh - var(--header-height));
+  min-height: 0;
 }
 
 .ghost {
@@ -10,7 +18,7 @@
   left: 50%;
   z-index: 0;
   translate: -50% -50%;
-  color: var(--color-bordeaux);
+  color: var(--color-white);
   font-family: var(--font-display);
   font-size: min(var(--display-xl), 12vw);
   line-height: 0.9;
@@ -23,19 +31,23 @@
 }
 
 .sliderWrap {
-  margin-top: 16px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 8px;
 }
 
 .grid {
-  margin-top: var(--space-sm);
-  border-bottom: 1px solid var(--color-rule);
+  margin-top: 8px;
+  border-bottom: 1px solid rgb(255 255 255 / 0.2);
 }
 
 .devNote {
   max-width: 44rem;
   margin: var(--space-sm) auto;
   padding-inline: 20px;
-  color: rgb(0 0 0 / 0.55);
+  color: rgb(255 255 255 / 0.7);
   font-size: 13px;
 }
 

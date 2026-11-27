@@ -1,23 +1,30 @@
 .line {
+  --rule: rgb(255 255 255 / 0.2);
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
-  border-top: 1px solid var(--color-rule);
+  border-top: 1px solid var(--rule);
 }
 
 .aside {
-  padding: 48px var(--space-sm) 48px var(--space-sm);
-  border-right: 1px solid var(--color-rule);
+  padding-inline: var(--space-sm);
+  border-right: 1px solid var(--rule);
 }
 
+/* The sticky box is one visible screen tall (below the nav) and centers its content, so each
+   line's title sits vertically centered while its wines are on screen, then hands over. */
 .sticky {
   position: sticky;
-  top: calc(var(--header-height) + 32px);
-  display: grid;
+  top: var(--header-height);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   gap: 24px;
+  min-height: calc(100svh - var(--header-height));
+  padding-block: 32px;
 }
 
 .title {
-  color: var(--color-bordeaux);
+  color: var(--color-white);
   font-family: var(--font-display);
   font-size: clamp(36px, 3.4vw, 48px);
   font-weight: 400;
@@ -42,11 +49,11 @@
 
 /* 1px rules between cards. */
 .card {
-  border-bottom: 1px solid var(--color-rule);
+  border-bottom: 1px solid var(--rule);
 }
 
 .card:nth-child(odd) {
-  border-right: 1px solid var(--color-rule);
+  border-right: 1px solid var(--rule);
 }
 
 .cardInner {
@@ -61,11 +68,11 @@
   width: auto;
   height: clamp(180px, 22vw, 260px);
   margin-bottom: 14px;
-  filter: drop-shadow(0 18px 16px rgb(0 0 0 / 0.16));
+  filter: drop-shadow(0 18px 16px rgb(0 0 0 / 0.3));
 }
 
 .name {
-  color: var(--color-bordeaux);
+  color: var(--color-white);
   font-family: var(--font-display);
   font-size: var(--display-card);
   font-weight: 400;
@@ -93,7 +100,7 @@
   position: absolute;
   inset: auto 0 14px;
   padding: 40px 12px 8px;
-  background: linear-gradient(to top, var(--color-white) 55%, transparent);
+  background: linear-gradient(to top, var(--color-bordeaux) 55%, transparent);
   font-size: 14px;
   line-height: 1.4;
   opacity: 0;
@@ -126,6 +133,8 @@
 
   .sticky {
     position: static;
+    min-height: 0;
+    padding-block: 0;
   }
 
   .cardInner {
@@ -137,7 +146,7 @@
   }
 }
 
-/* Outline button in bordeaux (it inherits currentColor). */
+/* Outline button in white on red (it inherits currentColor). */
 .asideBody > a {
-  color: var(--color-bordeaux);
+  color: var(--color-white);
 }

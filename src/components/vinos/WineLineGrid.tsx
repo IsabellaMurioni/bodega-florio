@@ -48,15 +48,24 @@ function WineLineGrid({ line, wines }: WineLineGridProps) {
             <li key={wine.id} className={styles.card}>
               <Reveal className={styles.cardInner}>
                 <div className={styles.bottleArea}>
-                  <BottlePlaceholder label={wine.name} height={260} className={styles.bottle} />
+                  <BottlePlaceholder
+                    label={wine.name}
+                    height={260}
+                    color="#240303"
+                    className={styles.bottle}
+                  />
                   <p className={styles.summary}>{wine.summary}</p>
                 </div>
                 <h3 className={styles.name}>{wine.name}</h3>
                 <p className={styles.label}>{line.label}</p>
                 {buy.to ? (
-                  <Button to={buy.to}>Consultar</Button>
+                  <Button variant="white" to={buy.to}>
+                    Consultar
+                  </Button>
                 ) : (
-                  <Button href={buy.href ?? ''}>Comprar</Button>
+                  <Button variant="white" href={buy.href ?? ''}>
+                    Comprar
+                  </Button>
                 )}
               </Reveal>
             </li>

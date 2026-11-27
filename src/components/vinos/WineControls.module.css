@@ -18,10 +18,10 @@
   gap: 10px;
   min-height: 44px;
   padding: 0 20px;
-  border: 0.8px solid var(--color-rule);
+  border: 0.8px solid rgb(255 255 255 / 0.4);
   border-radius: 999px;
-  background-color: var(--color-white);
-  color: var(--color-bordeaux);
+  background-color: transparent;
+  color: var(--color-white);
   font-size: 14px;
   font-weight: var(--ui-weight);
   cursor: pointer;
@@ -29,7 +29,7 @@
 }
 
 .filterButton:hover {
-  border-color: var(--color-bordeaux);
+  border-color: var(--color-white);
 }
 
 .menu {
@@ -70,9 +70,9 @@
   display: inline-flex;
   gap: 4px;
   padding: 4px;
-  border: 0.8px solid var(--color-rule);
+  border: 0.8px solid rgb(255 255 255 / 0.4);
   border-radius: 999px;
-  background-color: var(--color-white);
+  background-color: transparent;
 }
 
 .view {
@@ -83,7 +83,7 @@
   border: 0;
   border-radius: 50%;
   background: none;
-  color: var(--color-bordeaux);
+  color: var(--color-white);
   cursor: pointer;
   transition:
     background-color var(--dur-ui) var(--ease-ui),
@@ -91,8 +91,8 @@
 }
 
 .view.selected {
-  background-color: var(--color-bordeaux);
-  color: var(--color-white);
+  background-color: var(--color-white);
+  color: var(--color-bordeaux);
 }
 
 @media (max-width: 760px) {

@@ -30,16 +30,17 @@
   flex: 0 0 33.333%;
   justify-content: center;
   min-width: 0;
-  padding-block: 24px 40px;
+  padding-block: 8px 16px;
 }
 
 .bottle {
   width: auto;
-  height: clamp(280px, 46vh, 440px);
+  /* Sized from the viewport height so the whole block fits one screen. */
+  height: clamp(200px, 42svh, 420px);
   transform: scale(0.7);
   transform-origin: center bottom;
   opacity: 0.45;
-  filter: drop-shadow(0 24px 20px rgb(0 0 0 / 0.18));
+  filter: drop-shadow(0 20px 18px rgb(0 0 0 / 0.35));
   transition:
     transform var(--dur-ui) var(--ease-curtain),
     opacity var(--dur-ui) var(--ease-ui);
@@ -83,15 +84,15 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 6px;
-  margin-top: 8px;
+  gap: 5px;
+  margin-top: 4px;
 }
 
 .dot {
-  width: 10px;
-  height: 10px;
+  width: 7px;
+  height: 7px;
   padding: 0;
-  border: 0.8px solid var(--color-bordeaux);
+  border: 0.8px solid var(--color-white);
   border-radius: 50%;
   background: none;
   cursor: pointer;
@@ -99,14 +100,21 @@
 }
 
 .dotActive {
-  background-color: var(--color-bordeaux);
+  background-color: var(--color-white);
+}
+
+/* Short screens: no dots, the counter stays. */
+@media (max-height: 700px) {
+  .dots {
+    display: none;
+  }
 }
 
 .info {
   display: grid;
   justify-items: center;
-  gap: 10px;
-  margin-top: 28px;
+  gap: 6px;
+  margin-top: 14px;
   text-align: center;
 }
 
@@ -117,9 +125,9 @@
 }
 
 .name {
-  color: var(--color-bordeaux);
+  color: var(--color-white);
   font-family: var(--font-display);
-  font-size: var(--display-s);
+  font-size: clamp(28px, 5svh, 40px);
   line-height: 1;
   text-transform: uppercase;
 }
@@ -134,11 +142,13 @@
 /* Summary: two lines max, faded in when the active wine changes. */
 .summary {
   display: -webkit-box;
-  max-width: 420px;
+  /* Slightly wider than 420px so the ~140-character summaries fit in two lines. */
+  max-width: 480px;
   min-height: calc(2 * 1.4em);
-  margin: 4px 0 14px;
+  margin: 2px 0 8px;
   overflow: hidden;
-  font-size: 15px;
+  color: rgb(255 255 255 / 0.88);
+  font-size: 14px;
   line-height: 1.4;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
@@ -165,7 +175,7 @@
 .detailLink {
   padding-bottom: 3px;
   border-bottom: 1px solid currentColor;
-  color: var(--color-bordeaux);
+  color: var(--color-white);
   font-size: 10px;
   font-weight: var(--ui-weight);
   letter-spacing: 2.5px;

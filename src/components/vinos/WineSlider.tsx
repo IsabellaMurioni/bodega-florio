@@ -153,7 +153,7 @@ function WineSlider({ wines }: { wines: Wine[] }) {
                 <BottlePlaceholder
                   label={wine.name}
                   height={420}
-                  color={i % 2 ? 'var(--color-bordeaux)' : 'var(--color-bordeaux-dark)'}
+                  color="#240303"
                   className={styles.bottle}
                 />
               </div>
@@ -189,9 +189,13 @@ function WineSlider({ wines }: { wines: Wine[] }) {
         </p>
         <div className={styles.actions}>
           {buy.to ? (
-            <Button to={buy.to}>Consultar</Button>
+            <Button variant="white" to={buy.to}>
+              Consultar
+            </Button>
           ) : (
-            <Button href={buy.href ?? ''}>Comprar</Button>
+            <Button variant="white" href={buy.href ?? ''}>
+              Comprar
+            </Button>
           )}
           {SHOW_DETAIL_LINK && (
             <Link to={`/vinos/${active.id}`} className={styles.detailLink}>

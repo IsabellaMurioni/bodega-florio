@@ -44,7 +44,7 @@ function Vinos() {
       <title>Vinos | Bodega Florio</title>
       <h1 className="visually-hidden">Nuestros vinos{lineLabel ? `: ${lineLabel}` : ''}</h1>
 
-      <div className={styles.top}>
+      <div className={view === 'slider' ? `${styles.top} ${styles.fit}` : styles.top}>
         {view === 'slider' && (
           <p className={styles.ghost} aria-hidden="true">
             Nuestros vinos

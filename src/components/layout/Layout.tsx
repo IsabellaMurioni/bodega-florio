@@ -5,12 +5,13 @@ import Footer from '@/components/layout/Footer';
 import Loader from '@/components/layout/Loader';
 import PageCurtain from '@/components/layout/PageCurtain';
 import { IntroContext } from '@/hooks/useIntro';
-import { useNoHero } from '@/hooks/useNoHero';
+import { useNoHero, usePageTheme } from '@/hooks/useNoHero';
 import { startSmoothScroll, stopSmoothScroll } from '@/services/smoothScroll';
 import styles from './Layout.module.css';
 
 function Layout() {
   const noHero = useNoHero();
+  const theme = usePageTheme();
   // Layout mounts once per full page load, so the loader only ever shows on the first page.
   const [introDone, setIntroDone] = useState(false);
 
@@ -35,6 +36,7 @@ function Layout() {
       <main
         id="contenido"
         tabIndex={-1}
+        data-theme={theme}
         className={noHero ? `${styles.main} ${styles.noHero}` : styles.main}
       >
         <Outlet />
