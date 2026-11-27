@@ -5,6 +5,8 @@ export interface Wine {
   name: string;
   category: WineCategory;
   description: string;
+  /** Short summary for the slider and grid (max ~140 characters, from the description). */
+  summary: string;
   image?: string;
   cta: 'comprar' | 'consultar';
   buyUrl: string;

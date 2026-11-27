@@ -6,6 +6,7 @@ import {
   type KeyboardEvent,
   type PointerEvent,
 } from 'react';
+import { Link } from 'react-router';
 import useEmblaCarousel from 'embla-carousel-react';
 import BottlePlaceholder from '@/components/ui/BottlePlaceholder';
 import Button from '@/components/ui/Button';
@@ -13,6 +14,11 @@ import { wineCategories } from '@/data/wineCategories';
 import { getBuyLink } from '@/services/wines';
 import type { Wine } from '@/types';
 import styles from './WineSlider.module.css';
+
+const WHEEL_THRESHOLD = 40;
+const WHEEL_LOCK_MS = 600;
+/** The wine detail route (/vinos/:slug) arrives in R6; until then the "Ver ficha" link stays hidden. */
+const SHOW_DETAIL_LINK = false;
 
 const lineLabel = (wine: Wine) =>
   wineCategories.find((category) => category.id === wine.category)?.label ?? '';
@@ -56,6 +62,36 @@ function WineSlider({ wines }: { wines: Wine[] }) {
     };
   }, [embla]);
 
+  // Wheel / horizontal trackpad swipe over the bottles: one step = one wine. Deltas accumulate to
+  // a threshold, then input is locked for ~600ms so a single flick moves exactly one wine.
+  const stageRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const stage = stageRef.current;
+    if (!stage || !embla) return;
+    let acc = 0;
+    let lockedUntil = 0;
+    let idle = 0;
+    const onWheel = (event: WheelEvent) => {
+      event.preventDefault();
+      const delta = Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : event.deltaY;
+      const now = performance.now();
+      window.clearTimeout(idle);
+      idle = window.setTimeout(() => (acc = 0), 200);
+      if (now < lockedUntil) return;
+      acc += delta;
+      if (Math.abs(acc) < WHEEL_THRESHOLD) return;
+      if (acc > 0) embla.scrollNext();
+      else embla.scrollPrev();
+      acc = 0;
+      lockedUntil = now + WHEEL_LOCK_MS;
+    };
+    stage.addEventListener('wheel', onWheel, { passive: false });
+    return () => {
+      stage.removeEventListener('wheel', onWheel);
+      window.clearTimeout(idle);
+    };
+  }, [embla]);
+
   const onKeyDown = useCallback(
     (event: KeyboardEvent<HTMLDivElement>) => {
       if (event.key === 'ArrowLeft') {
@@ -87,7 +123,10 @@ function WineSlider({ wines }: { wines: Wine[] }) {
   return (
     <div className={styles.slider}>
       <div
+        ref={stageRef}
         className={styles.stage}
+        // Lenis must not scroll the page while the wheel drives the slider.
+        data-lenis-prevent-wheel
         onPointerMove={moveCursor}
         onPointerLeave={hideCursor}
         role="region"
@@ -145,11 +184,21 @@ function WineSlider({ wines }: { wines: Wine[] }) {
         </span>
         <p className={styles.name}>{active.name}</p>
         <p className={styles.line}>{lineLabel(active)}</p>
-        {buy.to ? (
-          <Button to={buy.to}>Consultar</Button>
-        ) : (
-          <Button href={buy.href ?? ''}>Comprar</Button>
-        )}
+        <p key={active.id} className={styles.summary}>
+          {active.summary}
+        </p>
+        <div className={styles.actions}>
+          {buy.to ? (
+            <Button to={buy.to}>Consultar</Button>
+          ) : (
+            <Button href={buy.href ?? ''}>Comprar</Button>
+          )}
+          {SHOW_DETAIL_LINK && (
+            <Link to={`/vinos/${active.id}`} className={styles.detailLink}>
+              Ver ficha
+            </Link>
+          )}
+        </div>
       </div>
     </div>
   );

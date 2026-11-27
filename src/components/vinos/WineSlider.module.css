@@ -125,14 +125,59 @@
 }
 
 .line {
-  margin-bottom: 10px;
   font-size: 10px;
   font-weight: var(--ui-weight);
   letter-spacing: var(--label-tracking);
   text-transform: uppercase;
 }
 
+/* Summary: two lines max, faded in when the active wine changes. */
+.summary {
+  display: -webkit-box;
+  max-width: 420px;
+  min-height: calc(2 * 1.4em);
+  margin: 4px 0 14px;
+  overflow: hidden;
+  font-size: 15px;
+  line-height: 1.4;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  animation: summary-in 0.3s var(--ease-ui);
+}
+
+@keyframes summary-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.detailLink {
+  padding-bottom: 3px;
+  border-bottom: 1px solid currentColor;
+  color: var(--color-bordeaux);
+  font-size: 10px;
+  font-weight: var(--ui-weight);
+  letter-spacing: 2.5px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
 @media (max-width: 760px) {
+  .summary {
+    padding-inline: 20px;
+  }
+
   .slide {
     flex-basis: 70%;
   }
@@ -145,5 +190,9 @@
 @media (prefers-reduced-motion: reduce) {
   .bottle {
     transition: none;
+  }
+
+  .summary {
+    animation: none;
   }
 }

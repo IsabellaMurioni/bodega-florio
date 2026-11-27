@@ -16,6 +16,8 @@ export const wines: Wine[] = [
     category: 'generosos',
     description:
       'Licoroso y aromático, elaborado con Moscatel Rosada. Guarda notas a pasas de uva, almendras y cítricos, con el dulzor natural de la uva. Se disfruta bien frío, como digestivo o junto a un postre.',
+    summary:
+      'Licoroso y aromático, elaborado con Moscatel Rosada. Guarda notas a pasas de uva, almendras y cítricos, con el dulzor natural de la uva.',
     cta: 'comprar',
     buyUrl: TIENDA_URL,
   },
@@ -25,6 +27,8 @@ export const wines: Wine[] = [
     category: 'generosos',
     description:
       'El vino emblema de la casa. Nace de un corte de vino rosado con arrope de uva y se fortifica hasta lograr su color caramelo oscuro, con notas a tostado, café y fruta madura. Compañero clásico de una tabla de quesos, frutos secos o un sambayón.',
+    summary:
+      'El vino emblema de la casa, de color caramelo oscuro, con notas a tostado, café y fruta madura.',
     cta: 'comprar',
     buyUrl: TIENDA_URL,
   },
@@ -34,6 +38,8 @@ export const wines: Wine[] = [
     category: 'generosos',
     description:
       'Tinto licoroso, estibado en barrica durante varios meses. Endulzado con arrope, desarrolla aromas a especias y fruta seca con un final aterciopelado. Se disfruta a temperatura ambiente o levemente fresco, junto a quesos, ahumados o chocolate.',
+    summary:
+      'Tinto licoroso, estibado en barrica durante varios meses. Endulzado con arrope, con aromas a especias y fruta seca.',
     cta: 'comprar',
     buyUrl: TIENDA_URL,
   },
@@ -43,6 +49,8 @@ export const wines: Wine[] = [
     category: 'generosos',
     description:
       'De tradición española, seco, criado bajo flor hasta lograr su color paja a dorado y su característico sabor a almendra. Aroma a avellana y un paladar suave y elegante. Se sirve frío, como aperitivo con jamón, aceitunas o tapas.',
+    summary:
+      'De tradición española, seco, criado bajo flor hasta lograr su color paja a dorado y su característico sabor a almendra.',
     cta: 'comprar',
     buyUrl: TIENDA_URL,
   },
@@ -52,6 +60,7 @@ export const wines: Wine[] = [
     category: 'generosos',
     description:
       'Elaborada con Moscatel Rosado cosechado a fines de abril para concentrar el dulzor. El mosto fresco se fortifica con alcohol y se deja estabilizar antes de su crianza. Ideal con postres, o simplemente sola.',
+    summary: 'Elaborada con Moscatel Rosado cosechado a fines de abril para concentrar el dulzor.',
     cta: 'comprar',
     buyUrl: TIENDA_URL,
   },
@@ -63,6 +72,7 @@ export const wines: Wine[] = [
     category: 'espumante',
     description:
       'Un corte de Chenin y Sangiovese elaborado por el método Charmat. Suave, equilibrado y frutado, con notas cítricas y de frutos rojos. Se disfruta bien frío, como aperitivo o junto a pescados y mariscos.',
+    summary: 'Un corte de Chenin y Sangiovese elaborado por el método Charmat.',
     cta: 'comprar',
     buyUrl: TIENDA_URL,
   },
@@ -72,6 +82,7 @@ export const wines: Wine[] = [
     category: 'espumante',
     description:
       'Elaborado con la varietal Nebbiolo, de tradición piamontesa. Espumante dulce de color rojo cereza aterciopelado. Acompaña bien tostadas, carnes, pastas y quesos duros o picantes.',
+    summary: 'Elaborado con la varietal Nebbiolo, de tradición piamontesa.',
     cta: 'comprar',
     buyUrl: TIENDA_URL,
   },
@@ -81,6 +92,8 @@ export const wines: Wine[] = [
     category: 'espumante',
     description:
       'Un corte de Pedro Giménez y Syrah, edulcorado con mosto concentrado y carbonatado en frío. Refrescante y con notas dulces marcadas — ideal bien frío, como aperitivo o para una ocasión especial.',
+    summary:
+      'Un corte de Pedro Giménez y Syrah, edulcorado con mosto concentrado y carbonatado en frío.',
     cta: 'comprar',
     buyUrl: TIENDA_URL,
   },
@@ -90,6 +103,7 @@ export const wines: Wine[] = [
     category: 'espumante',
     description:
       'De uva Bonarda, con un color intenso y sabor a fruta roja fresca. Las burbujas combinadas con el azúcar natural del mosto logran un equilibrio entre dulzor y acidez. Acompaña pastas, carne de ternera y tablas de quesos.',
+    summary: 'De uva Bonarda, con un color intenso y sabor a fruta roja fresca.',
     cta: 'comprar',
     buyUrl: TIENDA_URL,
   },
@@ -99,6 +113,8 @@ export const wines: Wine[] = [
     category: 'espumante',
     description:
       'Elaborado con uva Chenin, de color amarillo con reflejos dorados y aromas a fruta seca. Se sirve frío, junto a pescados, mariscos, quesos y fiambres.',
+    summary:
+      'Elaborado con uva Chenin, de color amarillo con reflejos dorados y aromas a fruta seca.',
     cta: 'comprar',
     buyUrl: TIENDA_URL,
     pending:
@@ -112,6 +128,8 @@ export const wines: Wine[] = [
     category: 'tintos',
     description:
       'Rojo intenso con reflejos granate, de fermentación controlada para preservar su carácter frutado. Aromas a fruta roja fresca y el perfil especiado típico de Maipú, con taninos suaves. Se sirve entre 16 y 18°C, junto a carnes rojas, asado, pastas con tomate o quesos duros.',
+    summary:
+      'Rojo intenso con reflejos granate, de fermentación controlada para preservar su carácter frutado.',
     cta: 'comprar',
     buyUrl: TIENDA_URL,
   },
@@ -121,6 +139,8 @@ export const wines: Wine[] = [
     category: 'tintos',
     description:
       'Un corte de Malbec con la varietal italiana Ancellotta, ensamblado a degustación por nuestro enólogo. Color oscuro y carácter frutado, con taninos maduros, notas a fruta roja y especias, y un final herbáceo intenso.',
+    summary:
+      'Un corte de Malbec con la varietal italiana Ancellotta, ensamblado a degustación por nuestro enólogo.',
     cta: 'comprar',
     buyUrl: TIENDA_URL,
   },
@@ -130,6 +150,8 @@ export const wines: Wine[] = [
     category: 'tintos',
     description:
       '100% Malbec, elaborado de forma tradicional en la bodega. Taninos suaves, aromas intensos a fruta roja y color rojo rubí. Acompaña carnes rojas, asado, quesos duros y pastas.',
+    summary:
+      '100% Malbec, elaborado de forma tradicional en la bodega. Taninos suaves, aromas intensos a fruta roja y color rojo rubí.',
     cta: 'comprar',
     buyUrl: TIENDA_URL,
   },
@@ -139,6 +161,8 @@ export const wines: Wine[] = [
     category: 'tintos',
     description:
       'Elaborado en piletas con epoxi; parte del vino prensado se reincorpora para una fermentación maloláctica que suaviza la acidez y aporta un paladar untuoso. Estiba en barricas de roble francés, ganando estabilidad y complejidad.',
+    summary:
+      'Con fermentación maloláctica que suaviza la acidez y estiba en barricas de roble francés.',
     cta: 'comprar',
     buyUrl: TIENDA_URL,
   },
@@ -148,6 +172,7 @@ export const wines: Wine[] = [
     category: 'tintos',
     description:
       'Nuestro homenaje a la pisada tradicional de la uva, el gesto fundacional de la casa. Un tinto de carácter, pensado para la mesa de todos los días.',
+    summary: 'Nuestro homenaje a la pisada tradicional de la uva, el gesto fundacional de la casa.',
     cta: 'comprar',
     buyUrl: TIENDA_URL,
     pending: 'Confirmar varietal y perfil real.',
@@ -160,6 +185,8 @@ export const wines: Wine[] = [
     category: 'dulces',
     description:
       'Elaborado con Torrontés Riojano, con maceración pelicular nocturna en frío para extraer todo su aroma. Notas cítricas y de pomelo, fresco y equilibrado entre acidez y dulzor natural. Se sirve bien frío, como aperitivo o con comida picante e intensa.',
+    summary:
+      'Elaborado con Torrontés Riojano, con maceración pelicular nocturna en frío para extraer todo su aroma.',
     cta: 'comprar',
     buyUrl: TIENDA_URL,
   },
@@ -169,6 +196,8 @@ export const wines: Wine[] = [
     category: 'dulces',
     description:
       'De uva Syrah, que le aporta su color característico. El mosto se separa temprano de los hollejos y se frena en frío para conservar el azúcar natural de la uva. Aromático y fresco, con notas a fruta roja — acompaña pescados, mariscos, pastas, quesos, carnes y postres.',
+    summary:
+      'De uva Syrah, que le aporta su color característico. Aromático y fresco, con notas a fruta roja.',
     cta: 'comprar',
     buyUrl: TIENDA_URL,
   },
@@ -178,6 +207,8 @@ export const wines: Wine[] = [
     category: 'dulces',
     description:
       'Blanco elaborado con uvas aromáticas seleccionadas, con maceración pelicular nocturna en frío. Equilibrio delicado entre notas cítricas y dulces, se sirve bien frío.',
+    summary:
+      'Blanco elaborado con uvas aromáticas seleccionadas, con maceración pelicular nocturna en frío.',
     cta: 'comprar',
     buyUrl: TIENDA_URL,
   },
@@ -188,6 +219,8 @@ export const wines: Wine[] = [
     name: 'Oporto x5L',
     category: 'industriales',
     description: OPORTO_INDUSTRIAL,
+    summary:
+      'El perfil de nuestro Oporto clásico en formato industrial, para grandes cocinas, pastelerías y heladerías.',
     cta: 'consultar',
     buyUrl: '/contacto?motivo=mayorista',
   },
@@ -196,6 +229,8 @@ export const wines: Wine[] = [
     name: 'Oporto x20L',
     category: 'industriales',
     description: OPORTO_INDUSTRIAL,
+    summary:
+      'El perfil de nuestro Oporto clásico en formato industrial, para grandes cocinas, pastelerías y heladerías.',
     cta: 'consultar',
     buyUrl: '/contacto?motivo=mayorista',
   },
@@ -204,6 +239,8 @@ export const wines: Wine[] = [
     name: 'Marsala x5L',
     category: 'industriales',
     description: MARSALA_INDUSTRIAL,
+    summary:
+      'El mismo Marsala emblema de la casa, en formato industrial — la base de nuestra provisión a heladerías y pastelerías de todo el país.',
     cta: 'consultar',
     buyUrl: '/contacto?motivo=mayorista',
   },
@@ -212,6 +249,8 @@ export const wines: Wine[] = [
     name: 'Marsala x20L',
     category: 'industriales',
     description: MARSALA_INDUSTRIAL,
+    summary:
+      'El mismo Marsala emblema de la casa, en formato industrial — la base de nuestra provisión a heladerías y pastelerías de todo el país.',
     cta: 'consultar',
     buyUrl: '/contacto?motivo=mayorista',
   },

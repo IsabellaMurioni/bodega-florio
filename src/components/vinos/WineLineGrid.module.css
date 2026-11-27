@@ -81,6 +81,39 @@
   text-transform: uppercase;
 }
 
+/* Summary over the lower part of the bottle area, on hover/focus (pointer devices only). */
+.bottleArea {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  width: 100%;
+}
+
+.summary {
+  position: absolute;
+  inset: auto 0 14px;
+  padding: 40px 12px 8px;
+  background: linear-gradient(to top, var(--color-white) 55%, transparent);
+  font-size: 14px;
+  line-height: 1.4;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--dur-ui) var(--ease-ui);
+}
+
+@media (hover: hover) {
+  .card:hover .summary,
+  .card:focus-within .summary {
+    opacity: 1;
+  }
+}
+
+@media (hover: none) {
+  .summary {
+    display: none;
+  }
+}
+
 @media (max-width: 760px) {
   .line {
     grid-template-columns: 1fr;

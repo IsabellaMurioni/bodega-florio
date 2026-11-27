@@ -47,7 +47,10 @@ function WineLineGrid({ line, wines }: WineLineGridProps) {
           return (
             <li key={wine.id} className={styles.card}>
               <Reveal className={styles.cardInner}>
-                <BottlePlaceholder label={wine.name} height={260} className={styles.bottle} />
+                <div className={styles.bottleArea}>
+                  <BottlePlaceholder label={wine.name} height={260} className={styles.bottle} />
+                  <p className={styles.summary}>{wine.summary}</p>
+                </div>
                 <h3 className={styles.name}>{wine.name}</h3>
                 <p className={styles.label}>{line.label}</p>
                 {buy.to ? (
