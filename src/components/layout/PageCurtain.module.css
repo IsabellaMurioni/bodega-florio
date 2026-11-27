@@ -1,0 +1,22 @@
+/* Bordeaux panel a few px wider than the viewport: the extra strip on its left (leading) edge is
+   gold, and it sits off-screen when the panel fully covers the page. */
+.curtain {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: -6px;
+  z-index: 200; /* above the nav (100), below the loader (300) */
+  width: calc(100% + 6px);
+  background-color: var(--color-bordeaux);
+  transform: translateX(100%);
+  pointer-events: none;
+}
+
+.strip {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 6px;
+  background-color: var(--color-gold);
+}

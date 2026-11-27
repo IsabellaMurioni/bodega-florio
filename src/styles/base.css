@@ -16,6 +16,11 @@
   }
 }
 
+/* Lenis animates the scroll itself; native smooth scrolling would fight it. */
+html.lenis {
+  scroll-behavior: auto;
+}
+
 html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;

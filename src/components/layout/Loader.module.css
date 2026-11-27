@@ -1,0 +1,43 @@
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 300; /* above the nav (100) and the page curtain (200) */
+  display: grid;
+  place-items: center;
+  background-color: var(--color-bordeaux);
+  transition: opacity var(--dur-ui) var(--ease-ui);
+}
+
+.leaving {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.mark {
+  width: 56px;
+  height: 56px;
+  /* A rotating "F" reads oddly, so the mark breathes instead. */
+  animation: breathe 1.8s var(--ease-ui) infinite alternate;
+}
+
+@keyframes breathe {
+  from {
+    opacity: 0.55;
+    transform: scale(0.92);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loader {
+    transition-duration: 0.2s !important;
+  }
+
+  .mark {
+    animation: none;
+  }
+}

@@ -1,5 +1,6 @@
 import { useRef, type ReactNode } from 'react';
-import { motion, useInView, useReducedMotion } from 'motion/react';
+import { domAnimation, LazyMotion, useInView, useReducedMotion } from 'motion/react';
+import * as m from 'motion/react-m';
 import styles from './RevealText.module.css';
 
 interface RevealTextProps {
@@ -41,40 +42,42 @@ function RevealText({
 
   return (
     // The polymorphic tag accepts any HTMLElement ref.
-    <Tag ref={ref as never} id={id} className={className}>
-      {lines.map((line, i) =>
-        reduceMotion ? (
-          <span key={i} className={styles.line}>
-            {line}
-          </span>
-        ) : (
-          <motion.span
-            key={i}
-            className={styles.line}
-            initial={{ clipPath: HIDDEN_CLIP }}
-            animate={{ clipPath: inView ? SHOWN_CLIP : HIDDEN_CLIP }}
-            transition={{
-              duration: DURATION,
-              ease: EASE_CURTAIN,
-              delay: (delay + i * stagger) / 1000,
-            }}
-          >
-            <motion.span
-              className={styles.inner}
-              initial={{ y: '35%' }}
-              animate={{ y: inView ? '0%' : '35%' }}
+    <LazyMotion features={domAnimation} strict>
+      <Tag ref={ref as never} id={id} className={className}>
+        {lines.map((line, i) =>
+          reduceMotion ? (
+            <span key={i} className={styles.line}>
+              {line}
+            </span>
+          ) : (
+            <m.span
+              key={i}
+              className={styles.line}
+              initial={{ clipPath: HIDDEN_CLIP }}
+              animate={{ clipPath: inView ? SHOWN_CLIP : HIDDEN_CLIP }}
               transition={{
                 duration: DURATION,
                 ease: EASE_CURTAIN,
                 delay: (delay + i * stagger) / 1000,
               }}
             >
-              {line}
-            </motion.span>
-          </motion.span>
-        ),
-      )}
-    </Tag>
+              <m.span
+                className={styles.inner}
+                initial={{ y: '35%' }}
+                animate={{ y: inView ? '0%' : '35%' }}
+                transition={{
+                  duration: DURATION,
+                  ease: EASE_CURTAIN,
+                  delay: (delay + i * stagger) / 1000,
+                }}
+              >
+                {line}
+              </m.span>
+            </m.span>
+          ),
+        )}
+      </Tag>
+    </LazyMotion>
   );
 }
 
