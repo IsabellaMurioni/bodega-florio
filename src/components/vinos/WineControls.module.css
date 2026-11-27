@@ -1,0 +1,117 @@
+.controls {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-inline: var(--space-sm);
+}
+
+.filter {
+  position: relative;
+}
+
+.filterButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 0 20px;
+  border: 0.8px solid var(--color-rule);
+  border-radius: 999px;
+  background-color: var(--color-white);
+  color: var(--color-bordeaux);
+  font-size: 14px;
+  font-weight: var(--ui-weight);
+  cursor: pointer;
+  transition: border-color var(--dur-ui) var(--ease-ui);
+}
+
+.filterButton:hover {
+  border-color: var(--color-bordeaux);
+}
+
+.menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  min-width: 220px;
+  margin: 0;
+  padding: 8px 0;
+  list-style: none;
+  border-radius: var(--radius-btn);
+  background-color: var(--color-white);
+  box-shadow: 0 12px 32px rgb(0 0 0 / 0.14);
+}
+
+.option {
+  display: block;
+  width: 100%;
+  padding: 11px 18px;
+  border: 0;
+  background: none;
+  color: var(--color-ink);
+  font-size: 15px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.option:hover {
+  background-color: var(--color-band);
+}
+
+.option.selected {
+  color: var(--color-bordeaux);
+  font-weight: var(--ui-weight);
+}
+
+.toggle {
+  display: inline-flex;
+  gap: 4px;
+  padding: 4px;
+  border: 0.8px solid var(--color-rule);
+  border-radius: 999px;
+  background-color: var(--color-white);
+}
+
+.view {
+  display: inline-grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  color: var(--color-bordeaux);
+  cursor: pointer;
+  transition:
+    background-color var(--dur-ui) var(--ease-ui),
+    color var(--dur-ui) var(--ease-ui);
+}
+
+.view.selected {
+  background-color: var(--color-bordeaux);
+  color: var(--color-white);
+}
+
+@media (max-width: 760px) {
+  .controls {
+    flex-direction: column;
+    align-items: stretch;
+    padding-inline: 20px;
+  }
+
+  .filterButton {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .menu {
+    right: 0;
+  }
+
+  .toggle {
+    align-self: center;
+  }
+}

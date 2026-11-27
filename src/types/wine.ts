@@ -15,4 +15,6 @@ export interface Wine {
 export interface WineCategoryInfo {
   id: WineCategory;
   label: string;
+  /** Short line description (shown in the wines grid). */
+  description: string;
 }

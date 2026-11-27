@@ -37,7 +37,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, Component: Home },
       { path: 'enoturismo', Component: Enoturismo },
-      { path: 'vinos', Component: Vinos },
+      { path: 'vinos', Component: Vinos, handle: { noHero: true } },
       { path: 'reservas', Component: Reservas },
       { path: 'contacto', Component: Contacto },
       ...devRoutes,

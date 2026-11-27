@@ -1,64 +1,88 @@
 import { useSearchParams } from 'react-router';
-import IntroText from '@/components/ui/IntroText';
-import PageHero from '@/components/ui/PageHero';
-import CategoryTabs from '@/components/vinos/CategoryTabs';
-import { PANEL_ID, tabId } from '@/components/vinos/tabIds';
-import WineGrid from '@/components/vinos/WineGrid';
+import WineControls, { type WineView } from '@/components/vinos/WineControls';
+import WineLineGrid from '@/components/vinos/WineLineGrid';
+import WineSlider from '@/components/vinos/WineSlider';
 import { wineCategories } from '@/data/wineCategories';
+import { wines } from '@/data/wines';
 import { getWinesByCategory } from '@/services/wines';
 import type { WineCategory } from '@/types';
 import styles from './Vinos.module.css';
 
-const DEFAULT_CATEGORY: WineCategory = 'generosos';
-
 const isCategory = (value: string | null): value is WineCategory =>
   wineCategories.some((category) => category.id === value);
 
+/**
+ * Wines listing. State lives in the URL: ?linea=<line> (absent = all lines) and
+ * ?vista=grilla (absent = slider), so footer, home and menu links keep working.
+ */
 function Vinos() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const param = searchParams.get('linea');
-  const active = isCategory(param) ? param : DEFAULT_CATEGORY;
-  const activeLabel = wineCategories.find((category) => category.id === active)?.label;
+  const linea = searchParams.get('linea');
+  const line = isCategory(linea) ? linea : null;
+  const view: WineView = searchParams.get('vista') === 'grilla' ? 'grilla' : 'slider';
 
-  const changeCategory = (id: WineCategory) => {
-    // replace: switching lines should not add history entries; keep the scroll position.
-    setSearchParams({ linea: id }, { replace: true, preventScrollReset: true });
+  const update = (next: { line?: WineCategory | null; view?: WineView }) => {
+    const params = new URLSearchParams(searchParams);
+    const nextLine = next.line === undefined ? line : next.line;
+    const nextView = next.view ?? view;
+    if (nextLine) params.set('linea', nextLine);
+    else params.delete('linea');
+    if (nextView === 'grilla') params.set('vista', 'grilla');
+    else params.delete('vista');
+    // replace: filters and views should not add history entries; keep the scroll position.
+    setSearchParams(params, { replace: true, preventScrollReset: true });
   };
+
+  const sliderWines = line ? getWinesByCategory(line) : wines;
+  const gridLines = line
+    ? wineCategories.filter((category) => category.id === line)
+    : wineCategories;
+  const lineLabel = wineCategories.find((category) => category.id === line)?.label;
 
   return (
     <>
       <title>Vinos | Bodega Florio</title>
-      <PageHero
-        eyebrow="22 etiquetas · 5 líneas"
-        title="Nuestros Vinos"
-        tone="bordeaux"
-        photoLabel="botellas de la línea Florio"
-      />
-      <IntroText>
-        De los generosos que nos dieron nombre a los varietales de guarda, cada vino de la familia
-        Florio se elabora en pequeños lotes, pensado para acompañar una mesa o una sobremesa larga.
-        Elegí una línea para conocerla en detalle.
-      </IntroText>
+      <h1 className="visually-hidden">Nuestros vinos{lineLabel ? `: ${lineLabel}` : ''}</h1>
 
-      <CategoryTabs categories={wineCategories} active={active} onChange={changeCategory} />
-
-      <section
-        id={PANEL_ID}
-        role="tabpanel"
-        aria-labelledby={tabId(active)}
-        className={`container ${styles.panel}`}
-      >
-        <h2 className="visually-hidden">{activeLabel}</h2>
-        <WineGrid key={active} wines={getWinesByCategory(active)} category={active} />
-
-        {import.meta.env.DEV && (
-          <p className={styles.devNote}>
-            {
-              'Los botones "Comprar" llevan por ahora a la tienda online general — una vez que confirmemos el enlace exacto de cada etiqueta, los conectamos producto por producto.'
-            }
+      <div className={styles.top}>
+        {view === 'slider' && (
+          <p className={styles.ghost} aria-hidden="true">
+            Nuestros vinos
           </p>
         )}
-      </section>
+        <WineControls
+          line={line}
+          view={view}
+          onLineChange={(value) => update({ line: value })}
+          onViewChange={(value) => update({ view: value })}
+        />
+
+        {view === 'slider' && (
+          <div className={styles.sliderWrap}>
+            <WineSlider key={line ?? 'todas'} wines={sliderWines} />
+          </div>
+        )}
+      </div>
+
+      {view === 'grilla' && (
+        <div className={styles.grid}>
+          {gridLines.map((category) => (
+            <WineLineGrid
+              key={category.id}
+              line={category}
+              wines={getWinesByCategory(category.id)}
+            />
+          ))}
+        </div>
+      )}
+
+      {import.meta.env.DEV && (
+        <p className={styles.devNote}>
+          {
+            'Los botones "Comprar" llevan por ahora a la tienda online general; cuando confirmemos el enlace de cada etiqueta, los conectamos producto por producto.'
+          }
+        </p>
+      )}
     </>
   );
 }

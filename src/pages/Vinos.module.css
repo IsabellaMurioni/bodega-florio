@@ -1,13 +1,48 @@
-.panel {
-  padding-block: var(--space-8) var(--section-padding);
-  scroll-margin-top: 120px;
+/* Top of the page on white: ghost title behind the controls and the slider. */
+.top {
+  position: relative;
+  padding-bottom: var(--space-sm);
+}
+
+.ghost {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  z-index: 0;
+  translate: -50% -50%;
+  color: var(--color-bordeaux);
+  font-family: var(--font-display);
+  font-size: min(var(--display-xl), 12vw);
+  line-height: 0.9;
+  text-align: center;
+  text-transform: uppercase;
+  white-space: nowrap;
+  opacity: 0.08;
+  pointer-events: none;
+  user-select: none;
+}
+
+.sliderWrap {
+  margin-top: 16px;
+}
+
+.grid {
+  margin-top: var(--space-sm);
+  border-bottom: 1px solid var(--color-rule);
 }
 
 .devNote {
   max-width: 44rem;
-  margin-top: var(--space-8);
-  padding-left: var(--space-5);
-  border-left: 2px dashed var(--color-gold);
-  font-size: var(--text-small);
-  color: var(--color-muted);
+  margin: var(--space-sm) auto;
+  padding-inline: 20px;
+  color: rgb(0 0 0 / 0.55);
+  font-size: 13px;
+}
+
+@media (max-width: 760px) {
+  .ghost {
+    top: 32%;
+    white-space: normal;
+    font-size: 64px;
+  }
 }

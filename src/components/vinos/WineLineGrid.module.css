@@ -1,0 +1,110 @@
+.line {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  border-top: 1px solid var(--color-rule);
+}
+
+.aside {
+  padding: 48px var(--space-sm) 48px var(--space-sm);
+  border-right: 1px solid var(--color-rule);
+}
+
+.sticky {
+  position: sticky;
+  top: calc(var(--header-height) + 32px);
+  display: grid;
+  gap: 24px;
+}
+
+.title {
+  color: var(--color-bordeaux);
+  font-family: var(--font-display);
+  font-size: clamp(36px, 3.4vw, 48px);
+  font-weight: 400;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.asideBody {
+  display: grid;
+  justify-items: start;
+  gap: 24px;
+  max-width: 340px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* 1px rules between cards. */
+.card {
+  border-bottom: 1px solid var(--color-rule);
+}
+
+.card:nth-child(odd) {
+  border-right: 1px solid var(--color-rule);
+}
+
+.cardInner {
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  padding: 48px 24px;
+  text-align: center;
+}
+
+.bottle {
+  width: auto;
+  height: clamp(180px, 22vw, 260px);
+  margin-bottom: 14px;
+  filter: drop-shadow(0 18px 16px rgb(0 0 0 / 0.16));
+}
+
+.name {
+  color: var(--color-bordeaux);
+  font-family: var(--font-display);
+  font-size: var(--display-card);
+  font-weight: 400;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.label {
+  margin-bottom: 8px;
+  font-size: 10px;
+  font-weight: var(--ui-weight);
+  letter-spacing: var(--label-tracking);
+  text-transform: uppercase;
+}
+
+@media (max-width: 760px) {
+  .line {
+    grid-template-columns: 1fr;
+  }
+
+  .aside {
+    padding: 40px 20px 24px;
+    border-right: 0;
+  }
+
+  .sticky {
+    position: static;
+  }
+
+  .cardInner {
+    padding: 32px 10px;
+  }
+
+  .name {
+    font-size: 18px;
+  }
+}
+
+/* Outline button in bordeaux (it inherits currentColor). */
+.asideBody > a {
+  color: var(--color-bordeaux);
+}

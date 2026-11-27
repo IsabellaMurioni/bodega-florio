@@ -1,0 +1,149 @@
+.slider {
+  position: relative;
+  z-index: 2;
+}
+
+.stage {
+  position: relative;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .stage {
+    cursor: none;
+  }
+}
+
+.viewport {
+  overflow: hidden;
+  outline-offset: -2px;
+}
+
+.track {
+  display: flex;
+  align-items: flex-end;
+  touch-action: pan-y pinch-zoom;
+}
+
+/* About three bottles visible; the centered one at full size. */
+.slide {
+  display: flex;
+  flex: 0 0 33.333%;
+  justify-content: center;
+  min-width: 0;
+  padding-block: 24px 40px;
+}
+
+.bottle {
+  width: auto;
+  height: clamp(280px, 46vh, 440px);
+  transform: scale(0.7);
+  transform-origin: center bottom;
+  opacity: 0.45;
+  filter: drop-shadow(0 24px 20px rgb(0 0 0 / 0.18));
+  transition:
+    transform var(--dur-ui) var(--ease-curtain),
+    opacity var(--dur-ui) var(--ease-ui);
+}
+
+.current .bottle {
+  transform: none;
+  opacity: 1;
+}
+
+/* Eye cursor following the pointer (desktop). */
+.cursor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 4;
+  display: grid;
+  place-items: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: var(--color-white);
+  box-shadow: 0 6px 20px rgb(0 0 0 / 0.15);
+  color: var(--color-bordeaux);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s var(--ease-ui);
+}
+
+.cursor[data-visible='true'] {
+  opacity: 1;
+}
+
+@media not ((hover: hover) and (pointer: fine)) {
+  .cursor {
+    display: none;
+  }
+}
+
+.dots {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: 0.8px solid var(--color-bordeaux);
+  border-radius: 50%;
+  background: none;
+  cursor: pointer;
+  transition: background-color var(--dur-ui) var(--ease-ui);
+}
+
+.dotActive {
+  background-color: var(--color-bordeaux);
+}
+
+.info {
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  margin-top: 28px;
+  text-align: center;
+}
+
+.counter {
+  font-size: 12px;
+  font-weight: var(--ui-weight);
+  letter-spacing: var(--label-tracking);
+}
+
+.name {
+  color: var(--color-bordeaux);
+  font-family: var(--font-display);
+  font-size: var(--display-s);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.line {
+  margin-bottom: 10px;
+  font-size: 10px;
+  font-weight: var(--ui-weight);
+  letter-spacing: var(--label-tracking);
+  text-transform: uppercase;
+}
+
+@media (max-width: 760px) {
+  .slide {
+    flex-basis: 70%;
+  }
+
+  .dots {
+    padding-inline: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bottle {
+    transition: none;
+  }
+}
