@@ -39,48 +39,65 @@
   border-radius: 0;
 }
 
-.title {
+/* Words layout: the lead group (first two words + paragraph) starts below the nav with a gap;
+   the third word sits near the bottom. */
+.content {
+  --hero-gap: 5vh;
   position: relative;
   z-index: 2;
-  display: grid;
-  justify-items: center;
-  gap: 0;
-  margin-top: 4vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  padding: calc(var(--nav-h-top) + var(--hero-gap)) var(--space-sm) 9vh;
   font-family: var(--font-display);
-  font-size: var(--display-xl);
-  font-weight: 400;
   line-height: 1;
   text-align: center;
   text-transform: uppercase;
 }
 
+/* Parallax from --p (0-1 while pinned). The lead group rises fast but its rise is capped so its
+   top stops at the nav's current bottom edge (--header-height), and it fades out instead of
+   passing under it. */
+.lead {
+  display: grid;
+  justify-items: center;
+  gap: 3vh;
+  transform: translateY(
+    max(
+      calc(var(--p, 0) * -55vh),
+      calc(-1 * (var(--nav-h-top) + var(--hero-gap) - var(--header-height)))
+    )
+  );
+  opacity: clamp(0, calc(1 - var(--p, 0) * 1.8), 1);
+}
+
 .pair,
-.word,
-.wordInner {
+.word {
   display: block;
 }
 
 .pair {
-  transform: translateY(calc(var(--p, 0) * -55vh));
+  font-size: var(--display-xl);
 }
 
+/* One step smaller so "Tradición italiana" stays on one line on desktop. */
 .third {
-  margin-top: 26vh;
+  display: block;
+  font-size: var(--display-l);
+  white-space: nowrap;
   transform: translateY(calc(var(--p, 0) * -8vh));
 }
 
 .text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  z-index: 2;
-  width: min(360px, calc(100% - 40px));
+  width: min(360px, 100%);
   margin: 0;
-  translate: -50% 1.2em;
-  transform: translateY(calc(var(--p, 0) * -55vh));
+  font-family: var(--font-body);
   font-size: var(--body-size);
   line-height: var(--body-leading);
-  text-align: center;
+  text-transform: none;
 }
 
 /* Bordeaux band after the hero. */
@@ -110,12 +127,14 @@
     height: 120vh;
   }
 
-  .title {
+  .pair,
+  .third {
     font-size: 56px;
   }
 
+  /* On phones the third line may wrap to two lines. */
   .third {
-    margin-top: 22vh;
+    white-space: normal;
   }
 
   .band {

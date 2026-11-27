@@ -4,7 +4,7 @@ import type { Commitment, Metric } from '@/types';
 
 export const homeHero = {
   /** Three display words; the first two rise faster than the photo, the third stays lower. */
-  words: ['Tradición', 'italiana', 'en Maipú'] as [string, string, string], // placeholder
+  words: ['Bodega', 'Florio', 'Tradición italiana'] as [string, string, string],
   text: 'La tierra que hizo el vino, y el vino que hizo la casa. Desde 1912 en Cruz de Piedra, Maipú.',
   photoLabel: 'Viñedos de la bodega con la Cordillera',
   band: {

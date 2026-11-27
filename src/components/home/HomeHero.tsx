@@ -40,30 +40,36 @@ function HomeHero() {
             <ImagePlaceholder label={homeHero.photoLabel} ratio="auto" className={styles.image} />
           </div>
 
-          <h1 id="home-hero-title" className={styles.title}>
-            <span className={styles.pair}>
-              <m.span className={styles.word} {...enter(0)}>
-                {first}
-              </m.span>
-              <m.span className={styles.word} {...enter(1)}>
-                {second}
-              </m.span>
-            </span>
-            <span className={`${styles.word} ${styles.third}`}>
-              <m.span className={styles.wordInner} {...enter(2)}>
+          {/* Accessible title; the big words below are its visual version. */}
+          <h1 id="home-hero-title" className="visually-hidden">
+            {first} {second}, {third}
+          </h1>
+
+          <div className={styles.content} aria-hidden="true">
+            <div className={styles.lead}>
+              <span className={styles.pair}>
+                <m.span className={styles.word} {...enter(0)}>
+                  {first}
+                </m.span>
+                <m.span className={styles.word} {...enter(1)}>
+                  {second}
+                </m.span>
+              </span>
+              <m.p
+                className={styles.text}
+                initial={reduceMotion ? false : { opacity: 0 }}
+                animate={{ opacity: introDone || reduceMotion ? 1 : 0 }}
+                transition={{ duration: 0.8, delay: 0.5 }}
+              >
+                {homeHero.text}
+              </m.p>
+            </div>
+            <span className={styles.third}>
+              <m.span className={styles.word} {...enter(2)}>
                 {third}
               </m.span>
             </span>
-          </h1>
-
-          <m.p
-            className={styles.text}
-            initial={reduceMotion ? false : { opacity: 0 }}
-            animate={{ opacity: introDone || reduceMotion ? 1 : 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-          >
-            {homeHero.text}
-          </m.p>
+          </div>
         </div>
       </section>
 
