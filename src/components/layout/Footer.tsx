@@ -1,5 +1,5 @@
 import { Link } from 'react-router';
-import logoWhite from '@/assets/brand/logo-white.png';
+import markWhite from '@/assets/brand/mark-white.png';
 import Reveal from '@/components/ui/Reveal';
 import { contactReasons, emails, locations } from '@/data/contact';
 import { wineCategories } from '@/data/wineCategories';
@@ -89,8 +89,8 @@ function Footer() {
     <footer className={styles.footer}>
       <div className={styles.inner}>
         <Reveal className={styles.logoWrap}>
-          <Link to="/" className={styles.logo} aria-label="Bodega Florio, inicio">
-            <img src={logoWhite} alt="" width={410} height={140} />
+          <Link to="/" className={styles.logo}>
+            <img src={markWhite} alt="Bodega Florio" width={64} height={64} />
           </Link>
         </Reveal>
 
