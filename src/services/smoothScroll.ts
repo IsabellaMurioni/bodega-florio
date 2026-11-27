@@ -46,3 +46,14 @@ export function scrollToElement(el: HTMLElement) {
 export function isSmoothScrolling() {
   return lenis !== null;
 }
+
+/** Freezes page scrolling (Lenis and native) while a full-screen overlay is open. */
+export function lockScroll() {
+  lenis?.stop();
+  document.documentElement.style.overflow = 'hidden';
+}
+
+export function unlockScroll() {
+  document.documentElement.style.overflow = '';
+  lenis?.start();
+}

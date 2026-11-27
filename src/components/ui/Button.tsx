@@ -1,4 +1,4 @@
-import type { ButtonHTMLAttributes, ReactNode } from 'react';
+import type { ButtonHTMLAttributes, MouseEventHandler, ReactNode } from 'react';
 import { Link } from 'react-router';
 import styles from './Button.module.css';
 
@@ -15,8 +15,8 @@ interface CommonProps {
 
 type ButtonProps = CommonProps &
   (
-    | { to: string; href?: never }
-    | { href: string; to?: never }
+    | { to: string; href?: never; onClick?: MouseEventHandler<HTMLAnchorElement> }
+    | { href: string; to?: never; onClick?: MouseEventHandler<HTMLAnchorElement> }
     | ({ to?: never; href?: never } & Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'className'>)
   );
 
@@ -40,7 +40,7 @@ function Button(props: ButtonProps) {
 
   if (props.to !== undefined) {
     return (
-      <Link to={props.to} className={classes}>
+      <Link to={props.to} className={classes} onClick={props.onClick}>
         {inner}
       </Link>
     );
@@ -48,7 +48,13 @@ function Button(props: ButtonProps) {
 
   if (props.href !== undefined) {
     return (
-      <a href={props.href} target="_blank" rel="noopener" className={classes}>
+      <a
+        href={props.href}
+        target="_blank"
+        rel="noopener"
+        className={classes}
+        onClick={props.onClick}
+      >
         {inner}
       </a>
     );

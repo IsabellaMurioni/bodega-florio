@@ -112,25 +112,14 @@
 
   /* Layout */
   --container-max: 1220px;
-  /* Sticky site header. Nav sets data-nav="compact" on <html> once the page is scrolled;
-     --header-height always holds the current height (sticky offsets read it). */
-  --nav-h-top: 120px; /* transparent bar over the hero */
-  --nav-h-compact: 72px; /* floating glass capsule */
-  --nav-inset: 12px; /* capsule gap to the viewport edges */
+  /* Fixed site header (R2). Nav sets html[data-nav="compact"] once the page is scrolled (or on
+     routes without a hero); --header-height always holds the current height. */
+  --nav-h-top: 100px;
+  --nav-h-compact: 70px;
   --nav-logo-top: 66px;
-  --nav-logo-compact: 40px;
-  --nav-link-top: 1.1rem;
-  --nav-link-compact: 1rem;
-  --nav-gap-top: 2.75rem; /* between links */
-  --nav-gap-compact: 2.25rem;
-  --nav-icon-top: 30px;
-  --nav-icon-compact: 24px;
-  --nav-pad-top: clamp(24px, 5vw, 80px); /* bar side padding */
-  --nav-pad-compact: 40px; /* side padding inside the capsule */
-  --nav-capsule-max: 1080px;
-  --nav-duration: 400ms;
-  /* White text must stay >= 4.5:1 even over white sections: 0.65 gives 5.9:1. */
-  --nav-glass: rgb(54 6 6 / 0.65);
+  --nav-logo-compact: 50px;
+  --nav-duration: 0.4s;
+  --nav-inset: 0px; /* legacy: the R1 glass capsule's gap, no longer used */
   --header-height: var(--nav-h-top);
   --gutter: clamp(20px, 5vw, 48px);
   --section-padding: clamp(4rem, 2.5rem + 6vw, 8rem);
@@ -156,16 +145,14 @@
 
 @media (max-width: 760px) {
   :root {
-    --nav-h-top: 92px;
-    --nav-h-compact: 60px;
-    --nav-inset: 8px;
+    --nav-h-top: 80px;
+    --nav-h-compact: 64px;
     --nav-logo-top: 48px;
-    --nav-logo-compact: 32px;
-    --nav-pad-compact: 20px;
+    --nav-logo-compact: 40px;
   }
 }
 
-/* Scrolled: sticky content sits just below the capsule (inset + capsule + inset). */
+/* Scrolled: sticky content sits right below the compact bar. */
 :root[data-nav='compact'] {
-  --header-height: calc(var(--nav-h-compact) + 2 * var(--nav-inset));
+  --header-height: var(--nav-h-compact);
 }

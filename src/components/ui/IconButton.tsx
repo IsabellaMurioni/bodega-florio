@@ -1,7 +1,7 @@
-import type { ButtonHTMLAttributes, ReactNode } from 'react';
+import type { ComponentProps, ReactNode } from 'react';
 import styles from './IconButton.module.css';
 
-interface IconButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'children'> {
+interface IconButtonProps extends Omit<ComponentProps<'button'>, 'children'> {
   /** Accessible name (the icon itself is decorative). */
   label: string;
   /** light = white disc, dark = bordeaux-dark disc, outline = thin ring in currentColor. */

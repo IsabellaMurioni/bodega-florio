@@ -1,6 +1,6 @@
 // Dev-only style guide (R0 design base). Registered in src/main.tsx only when import.meta.env.DEV is true.
 import { useState } from 'react';
-import logoNav from '@/assets/brand/logo-nav.png';
+import logoNav from '@/assets/brand/logo-bordeaux.png';
 import logoWhite from '@/assets/brand/logo-white.png';
 import BottlePlaceholder from '@/components/ui/BottlePlaceholder';
 import Button from '@/components/ui/Button';

@@ -1,0 +1,324 @@
+/* Full-screen menu (R2). Closed: hidden after its exit transitions. Open: a gold layer, then a
+   bordeaux one, drop down (clip-path), then the content enters. */
+.menu {
+  --color-focus: var(--color-gold);
+  /* outline buttons inside fill with white and show a bordeaux label on hover */
+  --btn-outline-invert: var(--color-bordeaux);
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  color: var(--color-white);
+  visibility: hidden;
+  transition: visibility 0s linear 0.9s;
+}
+
+.open {
+  visibility: visible;
+  transition: visibility 0s;
+}
+
+.layerGold,
+.layerBordeaux {
+  position: fixed;
+  inset: 0;
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path 0.7s var(--ease-curtain);
+}
+
+.layerGold {
+  background-color: var(--color-gold);
+  transition-delay: 0.15s; /* on close it leaves after the bordeaux one */
+}
+
+.layerBordeaux {
+  background-color: var(--color-bordeaux);
+}
+
+.open .layerGold {
+  clip-path: inset(0);
+  transition-delay: 0s;
+}
+
+.open .layerBordeaux {
+  clip-path: inset(0);
+  transition-delay: 0.12s;
+}
+
+.content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  padding: 24px var(--space-sm) 32px;
+  opacity: 0;
+  transition: opacity 0.25s var(--ease-ui);
+}
+
+.open .content {
+  opacity: 1;
+  transition: opacity 0.4s var(--ease-ui) 0.35s;
+}
+
+/* Top row: outline buttons | logo | WhatsApp + close. */
+.top {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 16px;
+}
+
+.topActions,
+.topRight {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.topRight {
+  justify-content: flex-end;
+}
+
+.logo {
+  display: block;
+  height: 50px;
+}
+
+.logo img {
+  width: auto;
+  height: 100%;
+}
+
+/* Main items. */
+.items {
+  margin: clamp(24px, 5vh, 56px) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  overflow: hidden;
+  border-bottom: 1px solid rgb(255 255 255 / 0.45);
+}
+
+.itemLink {
+  display: block;
+  padding-left: calc(var(--indent, 0) * var(--space-lg));
+  color: inherit;
+  text-decoration: none;
+}
+
+.itemLink:hover {
+  color: inherit;
+}
+
+.itemInner {
+  display: flex;
+  align-items: flex-end;
+  gap: 14px;
+  padding-block: 0.06em 0;
+  font-family: var(--font-display);
+  font-size: clamp(44px, 8vw, 117px);
+  line-height: 1;
+  transform: translateY(70%) skewY(7deg);
+  transform-origin: left bottom;
+  opacity: 0;
+  transition:
+    transform 0.9s var(--ease-curtain),
+    opacity 0.4s var(--ease-ui);
+}
+
+.open .itemInner {
+  transform: none;
+  opacity: 1;
+  transition:
+    transform 0.9s var(--ease-curtain) calc(0.35s + var(--i, 0) * 80ms),
+    opacity 0.5s var(--ease-ui) calc(0.35s + var(--i, 0) * 80ms);
+}
+
+.number {
+  font-family: var(--font-body);
+  font-size: var(--label-size);
+  font-weight: var(--ui-weight);
+  line-height: 1.4;
+  letter-spacing: var(--label-tracking);
+}
+
+.itemInner .number {
+  margin-bottom: 0.9em;
+}
+
+.current .number {
+  color: var(--color-gold);
+}
+
+.word {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+/* Hover: an image chip opens inside the word, pushing the letters apart. */
+.chip {
+  display: inline-block;
+  width: 0;
+  height: 0.83em;
+  margin-inline: 0;
+  border-radius: var(--radius-btn);
+  background-size: cover;
+  transition:
+    width var(--dur-ui) var(--ease-curtain),
+    margin var(--dur-ui) var(--ease-curtain);
+}
+
+.itemLink:hover .chip,
+.itemLink:focus-visible .chip {
+  width: 2em;
+  margin-inline: 0.12em;
+}
+
+/* Secondary links 05-07. */
+.secondary {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px clamp(24px, 4vw, 64px);
+  margin: 32px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.secondary a {
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+  color: inherit;
+  font-size: 15px;
+  font-weight: var(--ui-weight);
+  text-decoration: none;
+  transition: opacity 0.1s var(--ease-ui);
+}
+
+.secondary a:hover {
+  color: inherit;
+  opacity: 0.65;
+}
+
+.secondary .number {
+  opacity: 0.7;
+}
+
+.mobileActions {
+  display: none;
+}
+
+/* Bottom row: phone, email, address, Instagram. */
+.bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 32px;
+  margin-top: auto;
+  padding-top: 32px;
+  font-size: 14px;
+}
+
+.contact {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.contact:hover {
+  color: inherit;
+  opacity: 0.75;
+}
+
+.circle {
+  display: inline-grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 0.8px solid currentColor;
+  border-radius: 50%;
+  color: inherit;
+}
+
+.address {
+  flex: 1;
+  opacity: 0.8;
+}
+
+@media (max-width: 760px) {
+  .content {
+    padding: 12px 20px 28px;
+  }
+
+  .top {
+    grid-template-columns: 60px 1fr 60px;
+  }
+
+  /* The left column stays as an empty spacer so the logo remains centered. */
+  .topActions > *,
+  .whatsapp {
+    display: none;
+  }
+
+  .logo {
+    justify-self: center;
+    height: 40px;
+  }
+
+  .items {
+    margin-top: 28px;
+  }
+
+  .item {
+    border-bottom: 0;
+  }
+
+  .itemLink {
+    padding-left: 0;
+  }
+
+  .itemInner {
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding-block: 10px;
+    font-size: 36px;
+  }
+
+  .itemInner .number {
+    margin-bottom: 0;
+  }
+
+  .mobileActions {
+    display: grid;
+    gap: 12px;
+    margin-top: 28px;
+  }
+
+  .bottom {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .address {
+    flex-basis: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu,
+  .layerGold,
+  .layerBordeaux,
+  .content,
+  .itemInner,
+  .chip {
+    transition: none !important;
+  }
+}

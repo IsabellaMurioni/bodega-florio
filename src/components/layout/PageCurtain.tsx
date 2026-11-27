@@ -102,7 +102,7 @@ function PageCurtain() {
       if (reducedMotion()) return; // plain router navigation
       event.preventDefault();
       if (busy.current) return;
-      void run(url, link.closest('#menu-mobile') !== null);
+      void run(url, link.closest('#site-menu') !== null);
     };
 
     document.addEventListener('click', onClick, true);
