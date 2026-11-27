@@ -1,5 +1,5 @@
-import type { CSSProperties, ReactNode } from 'react';
-import { useReveal } from '@/hooks/useReveal';
+import { useRef, type ReactNode } from 'react';
+import { motion, useInView, useReducedMotion } from 'motion/react';
 import styles from './RevealText.module.css';
 
 interface RevealTextProps {
@@ -14,9 +14,18 @@ interface RevealTextProps {
   id?: string;
 }
 
+/** --ease-curtain and --dur-base from tokens.css. */
+const EASE_CURTAIN = [0.68, 0.09, 0, 0.97] as const;
+const DURATION = 1;
+
+/* Hidden: the line is clipped away from the top and pushed down a little. Shown: the clip box is
+   slightly larger than the line so descenders and Krylon accents are never cut. */
+const HIDDEN_CLIP = 'inset(0% 0% 100% 0%)';
+const SHOWN_CLIP = 'inset(-20% -10% -25% -10%)';
+
 /**
- * Line-mask reveal: when the block enters the viewport each line wipes in from the bottom
- * (clip-path) while sliding up. With prefers-reduced-motion the text is shown immediately.
+ * Line-mask reveal (Motion): when the block enters the viewport each line wipes in from the
+ * bottom (clip-path) while sliding up. With prefers-reduced-motion the text is shown immediately.
  */
 function RevealText({
   lines,
@@ -26,24 +35,45 @@ function RevealText({
   stagger = 90,
   id,
 }: RevealTextProps) {
-  const { ref, visible } = useReveal<HTMLElement>();
+  const ref = useRef<HTMLElement>(null);
+  const inView = useInView(ref, { once: true, margin: '0px 0px -10% 0px' });
+  const reduceMotion = useReducedMotion();
 
   return (
-    <Tag
-      // The polymorphic tag accepts any HTMLElement ref.
-      ref={ref as never}
-      id={id}
-      className={[styles.reveal, visible && styles.visible, className].filter(Boolean).join(' ')}
-    >
-      {lines.map((line, i) => (
-        <span
-          key={i}
-          className={styles.line}
-          style={{ '--line-delay': `${delay + i * stagger}ms` } as CSSProperties}
-        >
-          <span className={styles.inner}>{line}</span>
-        </span>
-      ))}
+    // The polymorphic tag accepts any HTMLElement ref.
+    <Tag ref={ref as never} id={id} className={className}>
+      {lines.map((line, i) =>
+        reduceMotion ? (
+          <span key={i} className={styles.line}>
+            {line}
+          </span>
+        ) : (
+          <motion.span
+            key={i}
+            className={styles.line}
+            initial={{ clipPath: HIDDEN_CLIP }}
+            animate={{ clipPath: inView ? SHOWN_CLIP : HIDDEN_CLIP }}
+            transition={{
+              duration: DURATION,
+              ease: EASE_CURTAIN,
+              delay: (delay + i * stagger) / 1000,
+            }}
+          >
+            <motion.span
+              className={styles.inner}
+              initial={{ y: '35%' }}
+              animate={{ y: inView ? '0%' : '35%' }}
+              transition={{
+                duration: DURATION,
+                ease: EASE_CURTAIN,
+                delay: (delay + i * stagger) / 1000,
+              }}
+            >
+              {line}
+            </motion.span>
+          </motion.span>
+        ),
+      )}
     </Tag>
   );
 }

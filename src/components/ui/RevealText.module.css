@@ -1,29 +1,8 @@
+/* Layout only; the reveal itself (clip-path + slide) is animated by Motion in RevealText.tsx. */
 .line {
   display: block;
-  clip-path: inset(0 0 100% 0);
-  transition: clip-path var(--dur-base) var(--ease-curtain) var(--line-delay, 0ms);
 }
 
 .inner {
   display: block;
-  transform: translateY(35%);
-  transition: transform var(--dur-base) var(--ease-curtain) var(--line-delay, 0ms);
-}
-
-/* Slightly larger clip box so descenders and Krylon accents are never cut once revealed. */
-.visible .line {
-  clip-path: inset(-0.2em -0.1em -0.25em -0.1em);
-}
-
-.visible .inner {
-  transform: none;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .line,
-  .inner {
-    clip-path: none;
-    transform: none;
-    transition: none;
-  }
 }
