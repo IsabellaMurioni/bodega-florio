@@ -1,0 +1,104 @@
+.split {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  min-height: min(100vh, 960px);
+  background-color: var(--color-white);
+}
+
+.text {
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 40px;
+  padding: var(--space-md) var(--space-sm);
+  text-align: center;
+}
+
+.title {
+  color: var(--color-bordeaux);
+  font-family: var(--font-display);
+  /* A notch under display-m so each title line fits the half-width column. */
+  font-size: clamp(40px, 5.2vw, 80px);
+  font-weight: 400;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.body {
+  display: grid;
+  justify-items: center;
+  gap: 32px;
+  max-width: 380px;
+}
+
+.slider {
+  position: relative;
+  min-height: 480px;
+}
+
+.viewport {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  cursor: grab;
+}
+
+.viewport:active {
+  cursor: grabbing;
+}
+
+.track {
+  display: flex;
+  height: 100%;
+  touch-action: pan-y pinch-zoom;
+}
+
+.slide {
+  flex: 0 0 100%;
+  min-width: 0;
+  height: 100%;
+}
+
+.photo {
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+}
+
+.controls {
+  position: absolute;
+  right: 24px;
+  bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.counter {
+  margin-right: 8px;
+  color: var(--color-ink);
+  font-size: 12px;
+  font-weight: var(--ui-weight);
+  letter-spacing: var(--label-tracking);
+}
+
+@media (max-width: 760px) {
+  .split {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  .text {
+    padding: 72px 20px;
+  }
+
+  .slider {
+    min-height: 0;
+    aspect-ratio: 4 / 5;
+  }
+
+  .controls {
+    right: 16px;
+    bottom: 16px;
+  }
+}

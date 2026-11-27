@@ -1,0 +1,88 @@
+.section {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-sm);
+  border-top: 1px solid var(--color-rule);
+  background-color: var(--color-white);
+}
+
+.aside {
+  display: grid;
+  align-content: start;
+  gap: 36px;
+}
+
+.title {
+  color: var(--color-bordeaux);
+  font-family: var(--font-display);
+  font-size: var(--display-m);
+  font-weight: 400;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.asideBody {
+  display: grid;
+  justify-items: start;
+  gap: 16px;
+}
+
+.sample {
+  color: rgb(0 0 0 / 0.6);
+  font-size: 13px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.card {
+  display: grid;
+  align-content: start;
+  gap: 18px;
+  height: 100%;
+  padding: 32px;
+  border: 1px solid var(--color-rule);
+  border-radius: var(--radius-btn);
+}
+
+.stars {
+  color: var(--color-bordeaux);
+  font-size: 14px;
+  letter-spacing: 0.2em;
+}
+
+.text {
+  margin: 0;
+  font-size: var(--body-lead);
+  line-height: var(--body-leading);
+}
+
+.author {
+  font-size: var(--label-size);
+  font-weight: var(--ui-weight);
+  letter-spacing: var(--label-tracking);
+  text-transform: uppercase;
+}
+
+@media (max-width: 1000px) {
+  .section {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .section {
+    padding: 72px 20px;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}

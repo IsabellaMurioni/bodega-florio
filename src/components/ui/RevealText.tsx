@@ -1,6 +1,7 @@
 import { useRef, type ReactNode } from 'react';
-import { domAnimation, LazyMotion, useInView, useReducedMotion } from 'motion/react';
+import { LazyMotion, useInView, useReducedMotion } from 'motion/react';
 import * as m from 'motion/react-m';
+import { loadMotionFeatures } from '@/services/loadMotionFeatures';
 import styles from './RevealText.module.css';
 
 interface RevealTextProps {
@@ -42,7 +43,7 @@ function RevealText({
 
   return (
     // The polymorphic tag accepts any HTMLElement ref.
-    <LazyMotion features={domAnimation} strict>
+    <LazyMotion features={loadMotionFeatures} strict>
       <Tag ref={ref as never} id={id} className={className}>
         {lines.map((line, i) =>
           reduceMotion ? (
